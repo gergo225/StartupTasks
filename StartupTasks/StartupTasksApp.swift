@@ -11,7 +11,11 @@ import SwiftUI
 struct StartupTasksApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+        }
+
+        Settings {
+            SettingsPage()
         }
     }
 }

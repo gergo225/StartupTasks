@@ -8,18 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		4E0C408C2C02743500F08629 /* StartupTasksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C408B2C02743500F08629 /* StartupTasksApp.swift */; };
-		4E0C408E2C02743500F08629 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C408D2C02743500F08629 /* ContentView.swift */; };
+		4E0C408E2C02743500F08629 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C408D2C02743500F08629 /* MainView.swift */; };
 		4E0C40902C02743600F08629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E0C408F2C02743600F08629 /* Assets.xcassets */; };
 		4E0C40932C02743600F08629 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E0C40922C02743600F08629 /* Preview Assets.xcassets */; };
+		4E628A682C065BC000A89F2A /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4E628A672C065BC000A89F2A /* LaunchAtLogin */; };
+		4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E628A692C065CE200A89F2A /* SettingsPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E0C40882C02743500F08629 /* StartupTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StartupTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0C408B2C02743500F08629 /* StartupTasksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupTasksApp.swift; sourceTree = "<group>"; };
-		4E0C408D2C02743500F08629 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4E0C408D2C02743500F08629 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4E0C408F2C02743600F08629 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E0C40922C02743600F08629 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4E0C40942C02743600F08629 /* StartupTasks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StartupTasks.entitlements; sourceTree = "<group>"; };
+		4E0C409A2C027E2100F08629 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4E628A692C065CE200A89F2A /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E628A682C065BC000A89F2A /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,11 +57,13 @@
 		4E0C408A2C02743500F08629 /* StartupTasks */ = {
 			isa = PBXGroup;
 			children = (
+				4E0C409A2C027E2100F08629 /* Info.plist */,
 				4E0C408B2C02743500F08629 /* StartupTasksApp.swift */,
-				4E0C408D2C02743500F08629 /* ContentView.swift */,
+				4E0C408D2C02743500F08629 /* MainView.swift */,
 				4E0C408F2C02743600F08629 /* Assets.xcassets */,
 				4E0C40942C02743600F08629 /* StartupTasks.entitlements */,
 				4E0C40912C02743600F08629 /* Preview Content */,
+				4E628A692C065CE200A89F2A /* SettingsPage.swift */,
 			);
 			path = StartupTasks;
 			sourceTree = "<group>";
@@ -85,6 +92,9 @@
 			dependencies = (
 			);
 			name = StartupTasks;
+			packageProductDependencies = (
+				4E628A672C065BC000A89F2A /* LaunchAtLogin */,
+			);
 			productName = StartupTasks;
 			productReference = 4E0C40882C02743500F08629 /* StartupTasks.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +123,9 @@
 				Base,
 			);
 			mainGroup = 4E0C407F2C02743500F08629;
+			packageReferences = (
+				4E628A662C065BC000A89F2A /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+			);
 			productRefGroup = 4E0C40892C02743500F08629 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,7 +152,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E0C408E2C02743500F08629 /* ContentView.swift in Sources */,
+				4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */,
+				4E0C408E2C02743500F08629 /* MainView.swift in Sources */,
 				4E0C408C2C02743500F08629 /* StartupTasksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,11 +293,13 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StartupTasks/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gergo.StartupTasks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -306,11 +322,13 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StartupTasks/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gergo.StartupTasks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -341,6 +359,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4E628A662C065BC000A89F2A /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4E628A672C065BC000A89F2A /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E628A662C065BC000A89F2A /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4E0C40802C02743500F08629 /* Project object */;
 }
