@@ -12,7 +12,7 @@ import LaunchAtLogin
 struct SettingsPage: View {
     var body: some View {
         return Form {
-            LaunchAtLogin.Toggle("Launch app at startup")
+            LaunchAtLogin.Toggle(Strings.launchAtStartup)
         }
         .frame(minWidth: 200, minHeight: 80)
         .padding(40)

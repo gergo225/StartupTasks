@@ -11,12 +11,10 @@ import LaunchAtLogin
 struct MainView: View {
     var body: some View {
         VStack(spacing: 16) {
-            Text(openSettingsToChangeText)
+            Text(Strings.openSettingsToChange)
         }
         .padding()
     }
-
-    private let openSettingsToChangeText: String = "Open settings to change this option"
 }
 
 #Preview {

@@ -11,6 +11,7 @@
 		4E0C408E2C02743500F08629 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C408D2C02743500F08629 /* MainView.swift */; };
 		4E0C40902C02743600F08629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E0C408F2C02743600F08629 /* Assets.xcassets */; };
 		4E0C40932C02743600F08629 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E0C40922C02743600F08629 /* Preview Assets.xcassets */; };
+		4E450A662C0777F300B5BF4B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E450A652C0777F300B5BF4B /* Strings.swift */; };
 		4E628A682C065BC000A89F2A /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4E628A672C065BC000A89F2A /* LaunchAtLogin */; };
 		4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E628A692C065CE200A89F2A /* SettingsPage.swift */; };
 /* End PBXBuildFile section */
@@ -23,6 +24,7 @@
 		4E0C40922C02743600F08629 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4E0C40942C02743600F08629 /* StartupTasks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StartupTasks.entitlements; sourceTree = "<group>"; };
 		4E0C409A2C027E2100F08629 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4E450A652C0777F300B5BF4B /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		4E628A692C065CE200A89F2A /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +66,7 @@
 				4E0C40942C02743600F08629 /* StartupTasks.entitlements */,
 				4E0C40912C02743600F08629 /* Preview Content */,
 				4E628A692C065CE200A89F2A /* SettingsPage.swift */,
+				4E450A652C0777F300B5BF4B /* Strings.swift */,
 			);
 			path = StartupTasks;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */,
+				4E450A662C0777F300B5BF4B /* Strings.swift in Sources */,
 				4E0C408E2C02743500F08629 /* MainView.swift in Sources */,
 				4E0C408C2C02743500F08629 /* StartupTasksApp.swift in Sources */,
 			);
