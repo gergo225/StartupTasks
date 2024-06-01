@@ -16,6 +16,7 @@
 		4E628A682C065BC000A89F2A /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4E628A672C065BC000A89F2A /* LaunchAtLogin */; };
 		4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E628A692C065CE200A89F2A /* SettingsPage.swift */; };
 		4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E75582C07B06000569A06 /* LoginDefaults.swift */; };
+		4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9210632C0B29E10035E1DE /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4E450A652C0777F300B5BF4B /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		4E628A692C065CE200A89F2A /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		4E8E75582C07B06000569A06 /* LoginDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDefaults.swift; sourceTree = "<group>"; };
+		4E9210632C0B29E10035E1DE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				4E450A652C0777F300B5BF4B /* Strings.swift */,
 				4E8E75582C07B06000569A06 /* LoginDefaults.swift */,
 				4E0FBE582C09FE6600D40E2B /* CombineExtensions.swift */,
+				4E9210632C0B29E10035E1DE /* MainViewModel.swift */,
 			);
 			path = StartupTasks;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */,
 				4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */,
 				4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */,
 				4E450A662C0777F300B5BF4B /* Strings.swift in Sources */,

@@ -12,6 +12,7 @@ import LaunchAtLogin
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         LoginDefaults.standard.launchedAtLogin = LaunchAtLogin.wasLaunchedAtLogin
+        LoginDefaults.standard.finishedStartupProcess = false
     }
 }
 

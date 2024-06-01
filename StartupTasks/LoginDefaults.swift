@@ -15,6 +15,8 @@ final class LoginDefaults: NSObject {
 
     private enum Keys: String, CaseIterable {
         case launchedAfterLogin = "launchedAfterLogin"
+        case finishedStartupProcess = "finishedStartupProcess"
+        case urlToOpen = "urlToOpen"
     }
 
     private let changedInput: PassthroughSubject<LoginDefaults, Never>
@@ -50,6 +52,23 @@ final class LoginDefaults: NSObject {
         }
     }
 
+    var finishedStartupProcess: Bool {
+        set {
+            userDefaults.set(newValue, forKey: Keys.finishedStartupProcess.rawValue)
+        }
+        get {
+            userDefaults.value(forKey: Keys.finishedStartupProcess.rawValue) as? Bool ?? false
+        }
+    }
+
+    var urlToOpen: String? {
+        set {
+            userDefaults.set(newValue, forKey: Keys.urlToOpen.rawValue)
+        }
+        get {
+            userDefaults.value(forKey: Keys.urlToOpen.rawValue) as? String
+        }
+    }
 }
 
 extension LoginDefaults {
