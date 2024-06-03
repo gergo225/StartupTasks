@@ -11,20 +11,11 @@ import SwiftUI
 
 enum MainAction {
     case launchedAtLoginChanged(launchedAtLogin: Bool)
-    case submitUrl(urlString: String)
-}
-
-class MainModel: ObservableObject {
-    @Published var addedUrlToOpen: String? = LoginDefaults.standard.urlToOpen
 }
 
 class MainViewModel: ObservableObject {
-    @ObservedObject var mainModel: MainModel = MainModel()
-
     func onAction(_ action: MainAction) {
         switch action {
-        case .submitUrl(let urlString):
-            submitUrl(urlString: urlString)
         case .launchedAtLoginChanged(let launchedAtLogin):
             onLaunchedAtLoginChanged(to: launchedAtLogin)
         }
@@ -32,12 +23,6 @@ class MainViewModel: ObservableObject {
 }
 
 private extension MainViewModel {
-    private func submitUrl(urlString: String) {
-        guard let validUrl = URL(string: urlString) else { return }
-        LoginDefaults.standard.urlToOpen = validUrl.absoluteString
-        mainModel.addedUrlToOpen = validUrl.absoluteString
-    }
-
     private func onLaunchedAtLoginChanged(to launchedAtLogin: Bool) {
         guard launchedAtLogin, !LoginDefaults.standard.finishedStartupProcess else { return }
         LoginDefaults.standard.finishedStartupProcess = true

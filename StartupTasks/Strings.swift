@@ -16,4 +16,5 @@ internal enum Strings {
     internal static func willOpenPage(pageUrl: String) -> String {
         "Will open the webpage: \(pageUrl)"
     }
+    internal static let websitesLabel = "Websites"
 }
