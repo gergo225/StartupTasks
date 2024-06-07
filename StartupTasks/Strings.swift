@@ -17,4 +17,6 @@ internal enum Strings {
         "Will open the webpage: \(pageUrl)"
     }
     internal static let websitesLabel = "Websites"
+    internal static let appsLabel = "Apps"
+    internal static let selectAppsToOpen = "Select apps to open after login"
 }

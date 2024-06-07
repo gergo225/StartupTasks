@@ -19,6 +19,11 @@
 		4E80ADE32C0D0B46001E4E8C /* UrlPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80ADE22C0D0B46001E4E8C /* UrlPageViewModel.swift */; };
 		4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E75582C07B06000569A06 /* LoginDefaults.swift */; };
 		4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9210632C0B29E10035E1DE /* MainViewModel.swift */; };
+		4EBB3E4D2C0F511C002B25A3 /* AppItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB3E4C2C0F511C002B25A3 /* AppItemView.swift */; };
+		4ECFA00D2C0E455B0078B00B /* AppsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA00C2C0E455B0078B00B /* AppsPage.swift */; };
+		4ECFA00F2C0E45A00078B00B /* AppsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA00E2C0E45A00078B00B /* AppsViewModel.swift */; };
+		4ECFA0112C0E46CC0078B00B /* AppItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA0102C0E46CC0078B00B /* AppItem.swift */; };
+		4ECFA0132C0E48A30078B00B /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA0122C0E48A30078B00B /* AppUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		4E80ADE22C0D0B46001E4E8C /* UrlPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlPageViewModel.swift; sourceTree = "<group>"; };
 		4E8E75582C07B06000569A06 /* LoginDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDefaults.swift; sourceTree = "<group>"; };
 		4E9210632C0B29E10035E1DE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		4EBB3E4C2C0F511C002B25A3 /* AppItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppItemView.swift; sourceTree = "<group>"; };
+		4ECFA00C2C0E455B0078B00B /* AppsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPage.swift; sourceTree = "<group>"; };
+		4ECFA00E2C0E45A00078B00B /* AppsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewModel.swift; sourceTree = "<group>"; };
+		4ECFA0102C0E46CC0078B00B /* AppItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppItem.swift; sourceTree = "<group>"; };
+		4ECFA0122C0E48A30078B00B /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,11 @@
 				4E9210632C0B29E10035E1DE /* MainViewModel.swift */,
 				4E80ADE02C0D0AE7001E4E8C /* UrlPage.swift */,
 				4E80ADE22C0D0B46001E4E8C /* UrlPageViewModel.swift */,
+				4ECFA00C2C0E455B0078B00B /* AppsPage.swift */,
+				4ECFA00E2C0E45A00078B00B /* AppsViewModel.swift */,
+				4ECFA0102C0E46CC0078B00B /* AppItem.swift */,
+				4ECFA0122C0E48A30078B00B /* AppUtils.swift */,
+				4EBB3E4C2C0F511C002B25A3 /* AppItemView.swift */,
 			);
 			path = StartupTasks;
 			sourceTree = "<group>";
@@ -173,11 +188,16 @@
 				4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */,
 				4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */,
 				4E80ADE32C0D0B46001E4E8C /* UrlPageViewModel.swift in Sources */,
+				4EBB3E4D2C0F511C002B25A3 /* AppItemView.swift in Sources */,
+				4ECFA0112C0E46CC0078B00B /* AppItem.swift in Sources */,
+				4ECFA0132C0E48A30078B00B /* AppUtils.swift in Sources */,
 				4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */,
 				4E450A662C0777F300B5BF4B /* Strings.swift in Sources */,
+				4ECFA00D2C0E455B0078B00B /* AppsPage.swift in Sources */,
 				4E0FBE592C09FE6600D40E2B /* CombineExtensions.swift in Sources */,
 				4E0C408E2C02743500F08629 /* MainView.swift in Sources */,
 				4E0C408C2C02743500F08629 /* StartupTasksApp.swift in Sources */,
+				4ECFA00F2C0E45A00078B00B /* AppsViewModel.swift in Sources */,
 				4E80ADE12C0D0AE7001E4E8C /* UrlPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

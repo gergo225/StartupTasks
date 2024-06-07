@@ -24,6 +24,7 @@ struct MainViewContent: View {
     var body: some View {
         TabView {
             urlPageItem
+            appsPageItem
         }
         .padding()
         .onAppear {
@@ -39,6 +40,13 @@ struct MainViewContent: View {
         UrlPage()
             .tabItem {
                 Label(Strings.websitesLabel, systemImage: "globe")
+            }
+    }
+
+    private var appsPageItem: some View {
+        AppsPage()
+            .tabItem {
+                Label(Strings.appsLabel, systemImage: "desktopcomputer")
             }
     }
 }
