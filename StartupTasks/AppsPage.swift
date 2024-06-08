@@ -11,8 +11,27 @@ import SwiftUI
 struct AppsPage: View {
     @StateObject var viewModel: AppsViewModel = AppsViewModel()
 
+    @State private var isAppSelectionSheetPresented: Bool = false
+
     var body: some View {
         AppsPageContent(model: viewModel.model, onAction: viewModel.onAction)
+            .sheet(isPresented: $isAppSelectionSheetPresented) {
+                appSelectionPage
+            }
+            .onChange(of: viewModel.shouldPresentAppSelection) { _, shouldPresent in
+                guard shouldPresent else { return }
+                isAppSelectionSheetPresented = true
+            }
+    }
+
+    private var appSelectionPage: some View {
+        AppSelectionPage { selectedApp in
+            guard let selectedApp else { return }
+            viewModel.onAction(.addNewApp(app: selectedApp))
+            isAppSelectionSheetPresented = false
+        } onCancel: {
+            isAppSelectionSheetPresented = false
+        }
     }
 }
 
@@ -22,7 +41,7 @@ struct AppsPageContent: View {
 
     var body: some View {
         VStack {
-            Text(Strings.selectAppsToOpen)
+            Text(Strings.theseAppsWillOpen)
                 .padding()
 
             List(model.addedApps, id: \.name) { appItem in
@@ -30,9 +49,9 @@ struct AppsPageContent: View {
             }
 
             Button {
-                // TODO: open dialog to add new apps
+                onAction(.openAppSelectionList)
             } label: {
-                Label("Add new app", systemImage: "plus")
+                Label(Strings.addNewApp, systemImage: "plus")
             }
         }
         .padding(.vertical, 10)

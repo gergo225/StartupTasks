@@ -19,4 +19,8 @@ internal enum Strings {
     internal static let websitesLabel = "Websites"
     internal static let appsLabel = "Apps"
     internal static let selectAppsToOpen = "Select apps to open after login"
+    internal static let theseAppsWillOpen = "These apps will open automatically after login"
+    internal static let addNewApp = "Add new app"
+    internal static let addLabel = "Add"
+    internal static let cancelLabel = "Cancel"
 }
