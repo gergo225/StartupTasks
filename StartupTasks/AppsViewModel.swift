@@ -14,7 +14,7 @@ enum AppsPageAction {
 }
 
 class AppsPageModel: ObservableObject {
-    @Published var addedApps: [AppItem] = []
+    @Published var addedApps: [AppItem] = LoginDefaults.standard.appPathsToOpen.compactMap { AppItem(appPath: $0) }
 }
 
 class AppsViewModel: ObservableObject {
@@ -38,7 +38,10 @@ private extension AppsViewModel {
     func addNewApp(_ app: AppItem) {
         guard !model.addedApps.contains(where: { $0.name == app.name }) else { return }
 
-        // TODO: save to UserDefaults too
+        var appPathsToOpen = LoginDefaults.standard.appPathsToOpen
+        appPathsToOpen.append(app.appPath)
+        LoginDefaults.standard.appPathsToOpen = appPathsToOpen
+        
         model.addedApps.append(app)
     }
 }

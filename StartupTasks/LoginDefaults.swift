@@ -17,6 +17,7 @@ final class LoginDefaults: NSObject {
         case launchedAfterLogin = "launchedAfterLogin"
         case finishedStartupProcess = "finishedStartupProcess"
         case urlToOpen = "urlToOpen"
+        case appsPathsToOpen = "appPathsToOpen"
     }
 
     private let changedInput: PassthroughSubject<LoginDefaults, Never>
@@ -67,6 +68,17 @@ final class LoginDefaults: NSObject {
         }
         get {
             userDefaults.value(forKey: Keys.urlToOpen.rawValue) as? String
+        }
+    }
+
+    var appPathsToOpen: [URL] {
+        set {
+            let appPathStrings = newValue.map { $0.relativePath }
+            userDefaults.set(appPathStrings, forKey: Keys.appsPathsToOpen.rawValue)
+        }
+        get {
+            let appPathStrings = userDefaults.value(forKey: Keys.appsPathsToOpen.rawValue) as? [String] ?? []
+            return appPathStrings.compactMap { URL(string: $0) }
         }
     }
 }
