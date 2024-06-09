@@ -19,8 +19,7 @@ struct AppsPage: View {
                 appSelectionPage
             }
             .onChange(of: viewModel.shouldPresentAppSelection) { _, shouldPresent in
-                guard shouldPresent else { return }
-                isAppSelectionSheetPresented = true
+                isAppSelectionSheetPresented = shouldPresent
             }
     }
 
@@ -28,9 +27,8 @@ struct AppsPage: View {
         AppSelectionPage { selectedApp in
             guard let selectedApp else { return }
             viewModel.onAction(.addNewApp(app: selectedApp))
-            isAppSelectionSheetPresented = false
         } onCancel: {
-            isAppSelectionSheetPresented = false
+            viewModel.onAction(.cancelAddNewApp)
         }
     }
 }
