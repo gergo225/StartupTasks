@@ -25,17 +25,12 @@ struct AppItemView: View {
 }
 
 #Preview {
-    let systemApp = getAppItem(named: "FindMy")
-    let userApp = getAppItem(named: "Google Chrome")
+    let systemApp = AppItem(appPath: URL(string: "/System/Applications/FindMy.app")!)!
+    let userApp = AppItem(appPath: URL(string: "/Applications/Google Chrome.app")!)!
 
     return VStack(alignment: .leading) {
         AppItemView(appItem: systemApp)
         AppItemView(appItem: userApp)
     }
     .padding()
-
-    func getAppItem(named appName: String) -> AppItem {
-        let appIcon = AppUtils.getIconForApp(named: appName)
-        return AppItem(name: appName, icon: appIcon)
-    }
 }

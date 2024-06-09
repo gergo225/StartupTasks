@@ -11,9 +11,10 @@ import AppKit
 struct AppItem: Hashable {
     var name: String
     var icon: NSImage?
+    var appPath: URL
 
     func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
+        hasher.combine(appPath)
     }
 }
 
@@ -25,6 +26,7 @@ extension AppItem {
         guard pathExists, pathIsValidApp else { return nil }
 
         self.name = appPath.deletingPathExtension().lastPathComponent
-        self.icon = AppUtils.getIconForApp(named: name)
+        self.icon = NSWorkspace.shared.icon(forFile: appPath.relativePath)
+        self.appPath = appPath
     }
 }

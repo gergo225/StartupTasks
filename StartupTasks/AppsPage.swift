@@ -62,8 +62,8 @@ struct AppsPageContent: View {
 #Preview {
     let viewModel = AppsViewModel()
 
-    let safari = AppItem(name: "Safari", icon: AppUtils.getIconForApp(named: "Safari"))
-    let weather = AppItem(name: "Weather", icon: AppUtils.getIconForApp(named: "Weather"))
+    let safari = AppItem(appPath: URL(string: "/Applications/Safari.app")!)!
+    let weather = AppItem(appPath: URL(string: "/System/Applications/Weather.app")!)!
     let apps = [safari, weather]
     viewModel.model.addedApps = apps
 
