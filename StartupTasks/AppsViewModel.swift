@@ -8,8 +8,9 @@
 import Foundation
 
 enum AppsPageAction {
+    case addApp(app: AppItem)
+    case removeApp(app: AppItem)
     case openAppSelectionList
-    case addNewApp(app: AppItem)
     case cancelAddNewApp
 }
 
@@ -23,9 +24,11 @@ class AppsViewModel: ObservableObject {
 
     func onAction(_ action: AppsPageAction) {
         switch action {
-        case .addNewApp(let app):
-            addNewApp(app)
+        case .addApp(let app):
+            addApp(app)
             shouldPresentAppSelection = false
+        case .removeApp(let app):
+            removeApp(app)
         case .openAppSelectionList:
             shouldPresentAppSelection = true
         case .cancelAddNewApp:
@@ -35,13 +38,27 @@ class AppsViewModel: ObservableObject {
 }
 
 private extension AppsViewModel {
-    func addNewApp(_ app: AppItem) {
-        guard !model.addedApps.contains(where: { $0.name == app.name }) else { return }
+    func addApp(_ app: AppItem) {
+        guard !model.addedApps.contains(where: { $0.appPath == app.appPath }) else { return }
 
         var appPathsToOpen = LoginDefaults.standard.appPathsToOpen
         appPathsToOpen.append(app.appPath)
         LoginDefaults.standard.appPathsToOpen = appPathsToOpen
         
         model.addedApps.append(app)
+    }
+
+    func removeApp(_ app: AppItem) {
+        guard model.addedApps.contains(where: { $0.appPath == app.appPath }) else { return }
+
+        var appPathsToOpen = LoginDefaults.standard.appPathsToOpen
+        if let appPathIndex = appPathsToOpen.firstIndex(of: app.appPath) {
+            appPathsToOpen.remove(at: appPathIndex)
+            LoginDefaults.standard.appPathsToOpen = appPathsToOpen
+        }
+
+        if let appIndex = model.addedApps.firstIndex(of: app) {
+            model.addedApps.remove(at: appIndex)
+        }
     }
 }
