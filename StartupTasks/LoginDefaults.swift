@@ -73,7 +73,7 @@ final class LoginDefaults: NSObject {
 
     var appPathsToOpen: [URL] {
         set {
-            let appPathStrings = newValue.map { $0.relativePath }
+            let appPathStrings = newValue.map { $0.absoluteString }
             userDefaults.set(appPathStrings, forKey: Keys.appsPathsToOpen.rawValue)
         }
         get {
