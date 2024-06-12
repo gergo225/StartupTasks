@@ -62,12 +62,14 @@ final class LoginDefaults: NSObject {
         }
     }
 
-    var urlToOpen: String? {
+    var urlsToOpen: [URL] {
         set {
-            userDefaults.set(newValue, forKey: Keys.urlToOpen.rawValue)
+            let urlStrings = newValue.map { $0.absoluteString }
+            userDefaults.set(urlStrings, forKey: Keys.urlToOpen.rawValue)
         }
         get {
-            userDefaults.value(forKey: Keys.urlToOpen.rawValue) as? String
+            let urlStrings = userDefaults.value(forKey: Keys.urlToOpen.rawValue) as? [String] ?? []
+            return urlStrings.compactMap { URL(string: $0) }
         }
     }
 

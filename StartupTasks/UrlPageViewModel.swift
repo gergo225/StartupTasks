@@ -9,11 +9,12 @@ import Foundation
 import SwiftUI
 
 enum UrlPageAction {
-    case submitUrl(urlString: String)
+    case addUrl(urlString: String)
+    case removeUrl(url: URL)
 }
 
 class UrlPageModel: ObservableObject {
-    @Published var addedUrlToOpen: String? = LoginDefaults.standard.urlToOpen
+    @Published var urlsToOpen: [URL] = LoginDefaults.standard.urlsToOpen
 }
 
 class UrlPageViewModel: ObservableObject {
@@ -21,16 +22,34 @@ class UrlPageViewModel: ObservableObject {
 
     func onAction(_ action: UrlPageAction) {
         switch action {
-        case .submitUrl(let urlString):
-            submitUrl(urlString: urlString)
+        case .addUrl(let urlString):
+            addUrl(urlString: urlString)
+        case .removeUrl(let url):
+            removeUrl(url)
         }
     }
 }
 
 private extension UrlPageViewModel {
-    private func submitUrl(urlString: String) {
+    private func addUrl(urlString: String) {
         guard let validUrl = URL(string: urlString) else { return }
-        LoginDefaults.standard.urlToOpen = validUrl.absoluteString
-        urlPageModel.addedUrlToOpen = validUrl.absoluteString
+        
+        var urlsToOpen = LoginDefaults.standard.urlsToOpen
+        urlsToOpen.append(validUrl)
+        LoginDefaults.standard.urlsToOpen = urlsToOpen
+
+        urlPageModel.urlsToOpen.append(validUrl)
+    }
+
+    private func removeUrl(_ url: URL) {
+        var urlsToOpen = LoginDefaults.standard.urlsToOpen
+        if let urlIndex = urlsToOpen.firstIndex(of: url) {
+            urlsToOpen.remove(at: urlIndex)
+            LoginDefaults.standard.urlsToOpen = urlsToOpen
+        }
+
+        if let urlIndex = urlPageModel.urlsToOpen.firstIndex(where: { $0 == url }) {
+            urlPageModel.urlsToOpen.remove(at: urlIndex)
+        }
     }
 }

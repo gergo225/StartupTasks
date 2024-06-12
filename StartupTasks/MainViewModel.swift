@@ -32,13 +32,16 @@ private extension MainViewModel {
 
 private extension MainViewModel {
     private func runStartupProcesses() {
-        openAddedUrl()
+        openAddedUrls()
         openAddedApps()
     }
 
-    private func openAddedUrl() {
-        guard let urlString = LoginDefaults.standard.urlToOpen, let urlToOpen = URL(string: urlString) else { return }
-        NSWorkspace.shared.open(urlToOpen)
+    private func openAddedUrls() {
+        let urls = LoginDefaults.standard.urlsToOpen
+
+        urls.forEach { url in
+            NSWorkspace.shared.open(url)
+        }
     }
 
     private func openAddedApps() {

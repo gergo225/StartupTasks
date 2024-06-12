@@ -21,14 +21,44 @@ struct UrlPageContent: View {
     var onAction: (UrlPageAction) -> Void = { _ in }
 
     @State private var urlString: String = ""
-    
+    @State private var hoveredItem: URL?
+
     var body: some View {
         VStack {
-            urlInput
+            List(model.urlsToOpen, id: \.self) { url in
+                urlItem(for: url)
+            }
 
-            Text(Strings.willOpenPage(pageUrl: model.addedUrlToOpen ?? Strings.emptyValue))
+            urlInput
         }
         .padding()
+    }
+
+    private func urlItem(for url: URL) -> some View {
+        let isHovered = hoveredItem == url
+
+        return HStack {
+            Text(url.absoluteString)
+
+            Spacer()
+
+            Button {
+                onAction(.removeUrl(url: url))
+            } label: {
+                Image(systemName: "xmark")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 12)
+                    .foregroundStyle(.secondary)
+                    .padding(8)
+                    .background(isHovered ? .red : Color(.clear))
+                    .clipShape(.rect(cornerRadius: 8))
+            }
+            .buttonStyle(.plain)
+            .onHover { hovering in
+                hoveredItem = hovering ? url : nil
+            }
+        }
     }
 
     private var urlInput: some View {
@@ -39,9 +69,9 @@ struct UrlPageContent: View {
                 }
 
                 Button {
-                    onAction(.submitUrl(urlString: urlString))
+                    onAction(.addUrl(urlString: urlString))
                 } label: {
-                    Text(Strings.saveLabel)
+                    Text(Strings.addLabel)
                 }
             }
         }
@@ -50,6 +80,9 @@ struct UrlPageContent: View {
 
 #Preview {
     let viewModel = UrlPageViewModel()
-    viewModel.urlPageModel.addedUrlToOpen = "https://typeracer.com"
+    viewModel.urlPageModel.urlsToOpen = [
+        URL(string: "https://typeracer.com")!,
+        URL(string: "https://youtube.com")!
+    ]
     return UrlPage(viewModel: viewModel)
 }

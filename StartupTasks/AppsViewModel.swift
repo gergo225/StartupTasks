@@ -49,8 +49,6 @@ private extension AppsViewModel {
     }
 
     func removeApp(_ app: AppItem) {
-        guard model.addedApps.contains(where: { $0.appPath == app.appPath }) else { return }
-
         var appPathsToOpen = LoginDefaults.standard.appPathsToOpen
         if let appPathIndex = appPathsToOpen.firstIndex(of: app.appPath) {
             appPathsToOpen.remove(at: appPathIndex)
