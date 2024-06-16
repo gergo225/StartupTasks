@@ -26,6 +26,8 @@
 		4ECFA00F2C0E45A00078B00B /* AppsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA00E2C0E45A00078B00B /* AppsViewModel.swift */; };
 		4ECFA0112C0E46CC0078B00B /* AppItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA0102C0E46CC0078B00B /* AppItem.swift */; };
 		4ECFA0132C0E48A30078B00B /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA0122C0E48A30078B00B /* AppUtils.swift */; };
+		4EDF8FDA2C1F52200057F07B /* UrlItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FD92C1F52200057F07B /* UrlItemView.swift */; };
+		4EDF8FDC2C1F52DD0057F07B /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		4ECFA00E2C0E45A00078B00B /* AppsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewModel.swift; sourceTree = "<group>"; };
 		4ECFA0102C0E46CC0078B00B /* AppItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppItem.swift; sourceTree = "<group>"; };
 		4ECFA0122C0E48A30078B00B /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
+		4EDF8FD92C1F52200057F07B /* UrlItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlItemView.swift; sourceTree = "<group>"; };
+		4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favicon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,8 @@
 			children = (
 				4E80ADE02C0D0AE7001E4E8C /* UrlPage.swift */,
 				4E80ADE22C0D0B46001E4E8C /* UrlPageViewModel.swift */,
+				4EDF8FD92C1F52200057F07B /* UrlItemView.swift */,
+				4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */,
 			);
 			path = Urls;
 			sourceTree = "<group>";
@@ -211,6 +217,7 @@
 				4EAEEB742C138AA10090BFA5 /* AppsList.swift in Sources */,
 				4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */,
 				4E80ADE32C0D0B46001E4E8C /* UrlPageViewModel.swift in Sources */,
+				4EDF8FDA2C1F52200057F07B /* UrlItemView.swift in Sources */,
 				4EBB3E4D2C0F511C002B25A3 /* AppItemView.swift in Sources */,
 				4EA2AD6A2C14BE1D009AF89E /* AppSelectionPage.swift in Sources */,
 				4ECFA0112C0E46CC0078B00B /* AppItem.swift in Sources */,
@@ -218,6 +225,7 @@
 				4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */,
 				4E450A662C0777F300B5BF4B /* Strings.swift in Sources */,
 				4ECFA00D2C0E455B0078B00B /* AppsPage.swift in Sources */,
+				4EDF8FDC2C1F52DD0057F07B /* Favicon.swift in Sources */,
 				4E0FBE592C09FE6600D40E2B /* CombineExtensions.swift in Sources */,
 				4E0C408E2C02743500F08629 /* MainView.swift in Sources */,
 				4E0C408C2C02743500F08629 /* StartupTasksApp.swift in Sources */,

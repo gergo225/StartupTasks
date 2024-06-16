@@ -16,7 +16,7 @@ final class LoginDefaults: NSObject {
     private enum Keys: String, CaseIterable {
         case launchedAfterLogin = "launchedAfterLogin"
         case finishedStartupProcess = "finishedStartupProcess"
-        case urlToOpen = "urlToOpen"
+        case urlsToOpen = "urlsToOpen"
         case appsPathsToOpen = "appPathsToOpen"
     }
 
@@ -65,10 +65,10 @@ final class LoginDefaults: NSObject {
     var urlsToOpen: [URL] {
         set {
             let urlStrings = newValue.map { $0.absoluteString }
-            userDefaults.set(urlStrings, forKey: Keys.urlToOpen.rawValue)
+            userDefaults.set(urlStrings, forKey: Keys.urlsToOpen.rawValue)
         }
         get {
-            let urlStrings = userDefaults.value(forKey: Keys.urlToOpen.rawValue) as? [String] ?? []
+            let urlStrings = userDefaults.value(forKey: Keys.urlsToOpen.rawValue) as? [String] ?? []
             return urlStrings.compactMap { URL(string: $0) }
         }
     }

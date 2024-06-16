@@ -38,7 +38,7 @@ struct UrlPageContent: View {
         let isHovered = hoveredItem == url
 
         return HStack {
-            Text(url.absoluteString)
+            UrlItemView(url: url)
 
             Spacer()
 
