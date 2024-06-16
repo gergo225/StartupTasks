@@ -28,6 +28,7 @@
 		4ECFA0132C0E48A30078B00B /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA0122C0E48A30078B00B /* AppUtils.swift */; };
 		4EDF8FDA2C1F52200057F07B /* UrlItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FD92C1F52200057F07B /* UrlItemView.swift */; };
 		4EDF8FDC2C1F52DD0057F07B /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */; };
+		4EDF8FDF2C1F6DA20057F07B /* DeleteableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FDE2C1F6DA20057F07B /* DeleteableList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		4ECFA0122C0E48A30078B00B /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		4EDF8FD92C1F52200057F07B /* UrlItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlItemView.swift; sourceTree = "<group>"; };
 		4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favicon.swift; sourceTree = "<group>"; };
+		4EDF8FDE2C1F6DA20057F07B /* DeleteableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteableList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		4E0C408A2C02743500F08629 /* StartupTasks */ = {
 			isa = PBXGroup;
 			children = (
+				4EDF8FDD2C1F6D8B0057F07B /* UI */,
 				4EDF8FD82C1F518C0057F07B /* Urls */,
 				4EDF8FD72C1F516E0057F07B /* Apps */,
 				4E0C409A2C027E2100F08629 /* Info.plist */,
@@ -135,6 +138,14 @@
 				4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */,
 			);
 			path = Urls;
+			sourceTree = "<group>";
+		};
+		4EDF8FDD2C1F6D8B0057F07B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4EDF8FDE2C1F6DA20057F07B /* DeleteableList.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +232,7 @@
 				4EBB3E4D2C0F511C002B25A3 /* AppItemView.swift in Sources */,
 				4EA2AD6A2C14BE1D009AF89E /* AppSelectionPage.swift in Sources */,
 				4ECFA0112C0E46CC0078B00B /* AppItem.swift in Sources */,
+				4EDF8FDF2C1F6DA20057F07B /* DeleteableList.swift in Sources */,
 				4ECFA0132C0E48A30078B00B /* AppUtils.swift in Sources */,
 				4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */,
 				4E450A662C0777F300B5BF4B /* Strings.swift in Sources */,

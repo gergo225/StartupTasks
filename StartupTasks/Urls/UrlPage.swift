@@ -25,40 +25,15 @@ struct UrlPageContent: View {
 
     var body: some View {
         VStack {
-            List(model.urlsToOpen, id: \.self) { url in
-                urlItem(for: url)
+            DeleteableList(items: model.urlsToOpen) { url in
+                UrlItemView(url: url)
+            } onRemove: { url in
+                onAction(.removeUrl(url: url))
             }
 
             urlInput
         }
         .padding()
-    }
-
-    private func urlItem(for url: URL) -> some View {
-        let isHovered = hoveredItem == url
-
-        return HStack {
-            UrlItemView(url: url)
-
-            Spacer()
-
-            Button {
-                onAction(.removeUrl(url: url))
-            } label: {
-                Image(systemName: "xmark")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 12)
-                    .foregroundStyle(.secondary)
-                    .padding(8)
-                    .background(isHovered ? .red : Color(.clear))
-                    .clipShape(.rect(cornerRadius: 8))
-            }
-            .buttonStyle(.plain)
-            .onHover { hovering in
-                hoveredItem = hovering ? url : nil
-            }
-        }
     }
 
     private var urlInput: some View {

@@ -41,43 +41,15 @@ struct AppsPageContent: View {
 
     var body: some View {
         VStack {
-            Text(Strings.theseAppsWillOpen)
-                .padding()
-
-            List(model.addedApps, id: \.name) { appItem in
-                appListItem(for: appItem)
+            DeleteableList(items: model.addedApps) { app in
+                AppItemView(appItem: app)
+            } onRemove: { app in
+                onAction(.removeApp(app: app))
             }
 
             addNewAppsButton
         }
         .padding(.vertical, 10)
-    }
-
-    private func appListItem(for app: AppItem) -> some View {
-        let isHovered = hoveredItem == app
-
-        return HStack {
-            AppItemView(appItem: app)
-            
-            Spacer()
-
-            Button {
-                onAction(.removeApp(app: app))
-            } label: {
-                Image(systemName: "xmark")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 12)
-                    .foregroundStyle(.secondary)
-                    .padding(8)
-                    .background(isHovered ? .red : Color(.clear))
-                    .clipShape(.rect(cornerRadius: 8))
-            }
-            .buttonStyle(.plain)
-            .onHover { hovering in
-                hoveredItem = hovering ? app : nil
-            }
-        }
     }
 
     private var addNewAppsButton: some View {
