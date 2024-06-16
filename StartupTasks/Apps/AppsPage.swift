@@ -11,15 +11,10 @@ import SwiftUI
 struct AppsPage: View {
     @StateObject var viewModel: AppsViewModel = AppsViewModel()
 
-    @State private var isAppSelectionSheetPresented: Bool = false
-
     var body: some View {
         AppsPageContent(model: viewModel.model, onAction: viewModel.onAction)
-            .sheet(isPresented: $isAppSelectionSheetPresented) {
+            .sheet(isPresented: $viewModel.shouldPresentAppSelection) {
                 appSelectionPage
-            }
-            .onChange(of: viewModel.shouldPresentAppSelection) { _, shouldPresent in
-                isAppSelectionSheetPresented = shouldPresent
             }
     }
 
