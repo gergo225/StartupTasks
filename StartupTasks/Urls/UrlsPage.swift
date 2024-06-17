@@ -45,7 +45,7 @@ struct UrlsPageContent: View {
 
             addNewUrlButton
         }
-        .padding()
+        .padding(.vertical, 10)
     }
 
     private var addNewUrlButton: some View {
@@ -53,7 +53,11 @@ struct UrlsPageContent: View {
             onAction(.openAddUrlPage)
         } label: {
             Label("Add new URL", systemImage: "plus")
+                .padding(.vertical, 6)
+                .frame(maxWidth: .infinity)
         }
+        .padding(.horizontal)
+        .padding(.vertical, 4)
     }
 }
 

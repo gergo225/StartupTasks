@@ -52,7 +52,11 @@ struct AppsPageContent: View {
             onAction(.openAppSelectionList)
         } label: {
             Label(Strings.addNewApp, systemImage: "plus")
+                .padding(.vertical, 6)
+                .frame(maxWidth: .infinity)
         }
+        .padding(.horizontal)
+        .padding(.vertical, 4)
     }
 }
 
