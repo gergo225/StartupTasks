@@ -37,7 +37,7 @@ struct MainViewContent: View {
     }
 
     private var urlPageItem: some View {
-        UrlPage()
+        UrlsPage()
             .tabItem {
                 Label(Strings.websitesLabel, systemImage: "globe")
             }

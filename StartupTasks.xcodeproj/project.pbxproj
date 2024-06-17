@@ -15,8 +15,8 @@
 		4E450A662C0777F300B5BF4B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E450A652C0777F300B5BF4B /* Strings.swift */; };
 		4E628A682C065BC000A89F2A /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4E628A672C065BC000A89F2A /* LaunchAtLogin */; };
 		4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E628A692C065CE200A89F2A /* SettingsPage.swift */; };
-		4E80ADE12C0D0AE7001E4E8C /* UrlPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80ADE02C0D0AE7001E4E8C /* UrlPage.swift */; };
-		4E80ADE32C0D0B46001E4E8C /* UrlPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80ADE22C0D0B46001E4E8C /* UrlPageViewModel.swift */; };
+		4E80ADE12C0D0AE7001E4E8C /* UrlsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80ADE02C0D0AE7001E4E8C /* UrlsPage.swift */; };
+		4E80ADE32C0D0B46001E4E8C /* UrlsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80ADE22C0D0B46001E4E8C /* UrlsViewModel.swift */; };
 		4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E75582C07B06000569A06 /* LoginDefaults.swift */; };
 		4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9210632C0B29E10035E1DE /* MainViewModel.swift */; };
 		4EA2AD6A2C14BE1D009AF89E /* AppSelectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2AD692C14BE1D009AF89E /* AppSelectionPage.swift */; };
@@ -29,6 +29,7 @@
 		4EDF8FDA2C1F52200057F07B /* UrlItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FD92C1F52200057F07B /* UrlItemView.swift */; };
 		4EDF8FDC2C1F52DD0057F07B /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */; };
 		4EDF8FDF2C1F6DA20057F07B /* DeleteableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FDE2C1F6DA20057F07B /* DeleteableList.swift */; };
+		4EDF8FE12C1F76990057F07B /* AddUrlPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FE02C1F76990057F07B /* AddUrlPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +43,8 @@
 		4E0FBE582C09FE6600D40E2B /* CombineExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtensions.swift; sourceTree = "<group>"; };
 		4E450A652C0777F300B5BF4B /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		4E628A692C065CE200A89F2A /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
-		4E80ADE02C0D0AE7001E4E8C /* UrlPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlPage.swift; sourceTree = "<group>"; };
-		4E80ADE22C0D0B46001E4E8C /* UrlPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlPageViewModel.swift; sourceTree = "<group>"; };
+		4E80ADE02C0D0AE7001E4E8C /* UrlsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlsPage.swift; sourceTree = "<group>"; };
+		4E80ADE22C0D0B46001E4E8C /* UrlsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlsViewModel.swift; sourceTree = "<group>"; };
 		4E8E75582C07B06000569A06 /* LoginDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDefaults.swift; sourceTree = "<group>"; };
 		4E9210632C0B29E10035E1DE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4EA2AD692C14BE1D009AF89E /* AppSelectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSelectionPage.swift; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		4EDF8FD92C1F52200057F07B /* UrlItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlItemView.swift; sourceTree = "<group>"; };
 		4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favicon.swift; sourceTree = "<group>"; };
 		4EDF8FDE2C1F6DA20057F07B /* DeleteableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteableList.swift; sourceTree = "<group>"; };
+		4EDF8FE02C1F76990057F07B /* AddUrlPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUrlPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,10 +134,11 @@
 		4EDF8FD82C1F518C0057F07B /* Urls */ = {
 			isa = PBXGroup;
 			children = (
-				4E80ADE02C0D0AE7001E4E8C /* UrlPage.swift */,
-				4E80ADE22C0D0B46001E4E8C /* UrlPageViewModel.swift */,
+				4E80ADE02C0D0AE7001E4E8C /* UrlsPage.swift */,
+				4E80ADE22C0D0B46001E4E8C /* UrlsViewModel.swift */,
 				4EDF8FD92C1F52200057F07B /* UrlItemView.swift */,
 				4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */,
+				4EDF8FE02C1F76990057F07B /* AddUrlPage.swift */,
 			);
 			path = Urls;
 			sourceTree = "<group>";
@@ -227,7 +230,8 @@
 				4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */,
 				4EAEEB742C138AA10090BFA5 /* AppsList.swift in Sources */,
 				4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */,
-				4E80ADE32C0D0B46001E4E8C /* UrlPageViewModel.swift in Sources */,
+				4E80ADE32C0D0B46001E4E8C /* UrlsViewModel.swift in Sources */,
+				4EDF8FE12C1F76990057F07B /* AddUrlPage.swift in Sources */,
 				4EDF8FDA2C1F52200057F07B /* UrlItemView.swift in Sources */,
 				4EBB3E4D2C0F511C002B25A3 /* AppItemView.swift in Sources */,
 				4EA2AD6A2C14BE1D009AF89E /* AppSelectionPage.swift in Sources */,
@@ -242,7 +246,7 @@
 				4E0C408E2C02743500F08629 /* MainView.swift in Sources */,
 				4E0C408C2C02743500F08629 /* StartupTasksApp.swift in Sources */,
 				4ECFA00F2C0E45A00078B00B /* AppsViewModel.swift in Sources */,
-				4E80ADE12C0D0AE7001E4E8C /* UrlPage.swift in Sources */,
+				4E80ADE12C0D0AE7001E4E8C /* UrlsPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

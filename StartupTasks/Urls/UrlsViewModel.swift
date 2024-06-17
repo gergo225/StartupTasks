@@ -11,26 +11,34 @@ import SwiftUI
 enum UrlPageAction {
     case addUrl(urlString: String)
     case removeUrl(url: URL)
+    case openAddUrlPage
+    case cancelAddNewUrl
 }
 
-class UrlPageModel: ObservableObject {
+class UrlsPageModel: ObservableObject {
     @Published var urlsToOpen: [URL] = LoginDefaults.standard.urlsToOpen
 }
 
-class UrlPageViewModel: ObservableObject {
-    @ObservedObject var urlPageModel: UrlPageModel = UrlPageModel()
+class UrlsViewModel: ObservableObject {
+    @Published var shouldPresentAddUrl: Bool = false
+    @ObservedObject var urlPageModel: UrlsPageModel = UrlsPageModel()
 
     func onAction(_ action: UrlPageAction) {
         switch action {
         case .addUrl(let urlString):
             addUrl(urlString: urlString)
+            shouldPresentAddUrl = false
         case .removeUrl(let url):
             removeUrl(url)
+        case .openAddUrlPage:
+            shouldPresentAddUrl = true
+        case .cancelAddNewUrl:
+            shouldPresentAddUrl = false
         }
     }
 }
 
-private extension UrlPageViewModel {
+private extension UrlsViewModel {
     private func addUrl(urlString: String) {
         guard let validUrl = URL(string: urlString) else { return }
         
