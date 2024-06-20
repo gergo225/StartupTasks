@@ -8,13 +8,13 @@
 import Foundation
 import SwiftUI
 
-struct UrlsPage: View {
+struct UrlsView: View {
     @StateObject var viewModel: UrlsViewModel = UrlsViewModel()
 
     @State private var urlString: String = ""
 
     var body: some View {
-        UrlsPageContent(model: viewModel.urlPageModel, onAction: viewModel.onAction)
+        UrlsViewContent(model: viewModel.urlPageModel, onAction: viewModel.onAction)
             .sheet(isPresented: $viewModel.shouldPresentAddUrl) {
                addUrlPage
             }
@@ -29,7 +29,7 @@ struct UrlsPage: View {
     }
 }
 
-struct UrlsPageContent: View {
+struct UrlsViewContent: View {
     @ObservedObject var model: UrlsPageModel
     var onAction: (UrlPageAction) -> Void = { _ in }
 
@@ -45,19 +45,27 @@ struct UrlsPageContent: View {
 
             addNewUrlButton
         }
-        .padding(.vertical, 10)
     }
 
     private var addNewUrlButton: some View {
         Button {
             onAction(.openAddUrlPage)
         } label: {
-            Label("Add new URL", systemImage: "plus")
-                .padding(.vertical, 6)
-                .frame(maxWidth: .infinity)
+            HStack {
+                Text("Add new URL")
+                Spacer()
+                Image(systemName: "plus")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 12, height: 12)
+                    .padding(8)
+            }
+            .padding(.vertical, 4)
+            .contentShape(.buttonBorder)
         }
-        .padding(.horizontal)
-        .padding(.vertical, 4)
+        .padding(.horizontal, 8)
+        .buttonStyle(.plain)
+        .foregroundStyle(.secondary)
     }
 }
 
@@ -67,5 +75,5 @@ struct UrlsPageContent: View {
         URL(string: "https://typeracer.com")!,
         URL(string: "https://youtube.com")!
     ]
-    return UrlsPage(viewModel: viewModel)
+    return UrlsView(viewModel: viewModel)
 }

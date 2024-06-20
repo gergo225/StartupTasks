@@ -13,10 +13,11 @@ struct AppItemView: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            if let appIcon = appItem.icon {
+            if let appIcon = appItem.icon ?? NSImage(systemSymbolName: "xmark.circle.fill", accessibilityDescription: nil) {
                 Image(nsImage: appIcon)
-            } else {
-                Image(systemName: "xmark.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40, height: 40)
             }
 
             Text(appItem.name)

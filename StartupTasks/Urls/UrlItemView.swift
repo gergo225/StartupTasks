@@ -13,7 +13,7 @@ struct UrlItemView: View {
     var body: some View {
         HStack(spacing: 8) {
             siteImage
-                .frame(maxWidth: 32)
+                .frame(width: 40, height: 40)
 
             Text(url.absoluteString)
         }
@@ -23,7 +23,7 @@ struct UrlItemView: View {
         let imageUrl = URL(string: Favicon.getImageUrl(domainUrlString: url.absoluteString))
         return AsyncImage(url: imageUrl) { image in
             image.resizable()
-                .aspectRatio(contentMode: .fit)
+                .scaledToFit()
         } placeholder: {
             ProgressView()
         }

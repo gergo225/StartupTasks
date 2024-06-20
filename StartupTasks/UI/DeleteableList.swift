@@ -16,9 +16,14 @@ struct DeleteableList<Value, Content>: View where Value: Hashable, Content: View
     @State private var hoveredItem: Value?
 
     var body: some View {
-            List(items, id: \.self) { item in
-                itemView(for: item)
+        VStack(alignment: .leading) {
+            ForEach(items.indices, id: \.self) { index in
+                itemView(for: items[index])
+                    .padding(.horizontal, 8)
+
+                Divider()
             }
+        }
     }
 
     private func itemView(for item: Value) -> some View {
@@ -35,7 +40,7 @@ struct DeleteableList<Value, Content>: View where Value: Hashable, Content: View
                 Image(systemName: "xmark")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: 12)
+                    .frame(width: 12, height: 12)
                     .foregroundStyle(.secondary)
                     .padding(8)
                     .background(isHovered ? .red : Color(.clear))

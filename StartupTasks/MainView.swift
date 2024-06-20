@@ -22,11 +22,7 @@ struct MainViewContent: View {
     @State private var launchedAtLogin: Bool? = nil
 
     var body: some View {
-        TabView {
-            urlPageItem
-            appsPageItem
-        }
-        .padding()
+        ProfilePage()
         .onAppear {
             launchedAtLogin = LoginDefaults.standard.launchedAtLogin
         }
@@ -34,20 +30,6 @@ struct MainViewContent: View {
             guard let launchedAtLogin else { return }
             onAction(.launchedAtLoginChanged(launchedAtLogin: launchedAtLogin))
         }
-    }
-
-    private var urlPageItem: some View {
-        UrlsPage()
-            .tabItem {
-                Label(Strings.websitesLabel, systemImage: "globe")
-            }
-    }
-
-    private var appsPageItem: some View {
-        AppsPage()
-            .tabItem {
-                Label(Strings.appsLabel, systemImage: "desktopcomputer")
-            }
     }
 }
 
