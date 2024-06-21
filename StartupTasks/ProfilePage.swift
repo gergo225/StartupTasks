@@ -33,7 +33,7 @@ struct ProfilePage: View {
             .groupBoxStyle(ListGroupBoxStyle())
             .padding()
         }
-        .frame(maxHeight: .infinity)
+        .frame(minWidth: 400, minHeight: 400, maxHeight: .infinity)
     }
 }
 

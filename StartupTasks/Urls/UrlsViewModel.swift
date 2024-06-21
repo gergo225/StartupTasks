@@ -11,7 +11,7 @@ import SwiftUI
 enum UrlPageAction {
     case addUrl(urlString: String)
     case removeUrl(url: URL)
-    case openAddUrlPage
+    case addUrlPressed
     case cancelAddNewUrl
 }
 
@@ -30,7 +30,7 @@ class UrlsViewModel: ObservableObject {
             shouldPresentAddUrl = false
         case .removeUrl(let url):
             removeUrl(url)
-        case .openAddUrlPage:
+        case .addUrlPressed:
             shouldPresentAddUrl = true
         case .cancelAddNewUrl:
             shouldPresentAddUrl = false

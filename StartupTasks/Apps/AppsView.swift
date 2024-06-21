@@ -36,36 +36,16 @@ struct AppsViewContent: View {
 
     var body: some View {
         VStack {
-            DeleteableList(items: model.addedApps) { app in
+            EditableList(items: model.addedApps, addButtonText: Strings.addNewApp) { app in
                 AppItemView(appItem: app)
+            } onAddPressed: {
+                onAction(.addAppPressed)
             } onRemove: { app in
                 onAction(.removeApp(app: app))
             }
-
-            addNewAppsButton
         }
     }
 
-    private var addNewAppsButton: some View {
-        Button {
-            onAction(.openAppSelectionList)
-        } label: {
-            HStack(alignment: .center) {
-                Text(Strings.addNewApp)
-                Spacer()
-                Image(systemName: "plus")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 12, height: 12)
-                    .padding(8)
-            }
-            .padding(.vertical, 4)
-            .contentShape(.buttonBorder)
-        }
-        .padding(.horizontal, 8)
-        .buttonStyle(.plain)
-        .foregroundStyle(.secondary)
-    }
 }
 
 

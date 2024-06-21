@@ -10,7 +10,7 @@ import Foundation
 enum AppsPageAction {
     case addApp(app: AppItem)
     case removeApp(app: AppItem)
-    case openAppSelectionList
+    case addAppPressed
     case cancelAddNewApp
 }
 
@@ -29,7 +29,7 @@ class AppsViewModel: ObservableObject {
             shouldPresentAppSelection = false
         case .removeApp(let app):
             removeApp(app)
-        case .openAppSelectionList:
+        case .addAppPressed:
             shouldPresentAppSelection = true
         case .cancelAddNewApp:
             shouldPresentAppSelection = false

@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-struct DeleteableList<Value, Content>: View where Value: Hashable, Content: View {
+struct EditableList<Value, Content>: View where Value: Hashable, Content: View {
 
     let items: [Value]
+    let addButtonText: String
     @ViewBuilder var itemContent: (Value) -> Content
+    var onAddPressed: () -> Void
     var onRemove: (Value) -> Void
 
     @State private var hoveredItem: Value?
@@ -23,6 +25,8 @@ struct DeleteableList<Value, Content>: View where Value: Hashable, Content: View
 
                 Divider()
             }
+
+            addButton
         }
     }
 
@@ -51,6 +55,27 @@ struct DeleteableList<Value, Content>: View where Value: Hashable, Content: View
                 hoveredItem = hovering ? item : nil
             }
         }
+    }
+
+    private var addButton: some View {
+        Button {
+            onAddPressed()
+        } label: {
+            HStack(alignment: .center) {
+                Text(addButtonText)
+                Spacer()
+                Image(systemName: "plus")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 12, height: 12)
+                    .padding(8)
+            }
+            .padding(.vertical, 4)
+            .contentShape(.buttonBorder)
+        }
+        .padding(.horizontal, 8)
+        .buttonStyle(.plain)
+        .foregroundStyle(.secondary)
     }
 }
 

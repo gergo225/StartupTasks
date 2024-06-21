@@ -37,35 +37,14 @@ struct UrlsViewContent: View {
 
     var body: some View {
         VStack {
-            DeleteableList(items: model.urlsToOpen) { url in
+            EditableList(items: model.urlsToOpen, addButtonText: "Add new webpage") { url in
                 UrlItemView(url: url)
+            } onAddPressed: {
+                onAction(.addUrlPressed)
             } onRemove: { url in
                 onAction(.removeUrl(url: url))
             }
-
-            addNewUrlButton
         }
-    }
-
-    private var addNewUrlButton: some View {
-        Button {
-            onAction(.openAddUrlPage)
-        } label: {
-            HStack {
-                Text("Add new URL")
-                Spacer()
-                Image(systemName: "plus")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 12, height: 12)
-                    .padding(8)
-            }
-            .padding(.vertical, 4)
-            .contentShape(.buttonBorder)
-        }
-        .padding(.horizontal, 8)
-        .buttonStyle(.plain)
-        .foregroundStyle(.secondary)
     }
 }
 
