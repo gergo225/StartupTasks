@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct ProfilePage: View {
-
-    @ObservedObject var appsViewModel: AppsViewModel = AppsViewModel()
-    @ObservedObject var urlsViewModel: UrlsViewModel = UrlsViewModel()
+    let profileViewModel: ProfileViewModel
 
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
                 GroupBox {
-                    AppsView(viewModel: appsViewModel)
+                    AppsView(viewModel: profileViewModel.appsViewModel)
                 } label: {
                     Text("Apps")
                 }
@@ -25,7 +23,7 @@ struct ProfilePage: View {
                     .frame(height: 16)
 
                 GroupBox {
-                    UrlsView(viewModel: urlsViewModel)
+                    UrlsView(viewModel: profileViewModel.urlsViewModel)
                 } label: {
                     Text("Websites")
                 }
@@ -51,6 +49,8 @@ struct ProfilePage: View {
         URL(string: "https://youtube.com")!
     ]
 
-    return ProfilePage(appsViewModel: appsViewModel, urlsViewModel: urlsViewModel)
+    let profileViewModel = ProfileViewModel(appsViewModel: appsViewModel, urlsViewModel: urlsViewModel)
+
+    return ProfilePage(profileViewModel: profileViewModel)
         .frame(height: 800)
 }
