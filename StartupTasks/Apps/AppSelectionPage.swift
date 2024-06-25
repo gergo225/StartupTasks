@@ -20,6 +20,14 @@ struct AppSelectionPage: View {
 
             buttonRow
         }
+        .onKeyPress(.return) {
+            if let selectedApp {
+                onConfirm(selectedApp)
+                return .handled
+            } else {
+                return .ignored
+            }
+        }
         .padding()
         .frame(minWidth: 500, minHeight: 400)
     }

@@ -20,6 +20,14 @@ struct AddUrlPage: View {
             Spacer()
             buttonRow
         }
+        .onKeyPress(.return) {
+            if !urlString.trimmingCharacters(in: .whitespaces).isEmpty {
+                onConfirm(urlString)
+                return .handled
+            } else {
+                return .ignored
+            }
+        }
         .padding()
         .frame(minWidth: 350, maxWidth: 600, minHeight: 100, maxHeight: 150)
     }
