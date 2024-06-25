@@ -25,12 +25,9 @@ class MainViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
 
     init() {
-        LoginDefaults.standard.changed.map { $0.profiles }
-            .sink { [weak self] profiles in
-                guard let self else { return }
-                model.profiles = profiles
-            }
-            .store(in: &subscriptions)
+        subscribeToPersistedProfileChanges()
+
+        addDefaultProfileIfNeeded()
     }
 
     func onAction(_ action: MainAction) {
@@ -40,6 +37,31 @@ class MainViewModel: ObservableObject {
         case .addProfilePressed:
             onAddProfilePressed()
         }
+    }
+}
+
+private extension MainViewModel {
+    func addDefaultProfileIfNeeded() {
+        guard model.profiles.isEmpty else { return }
+        guard let defaultProfile else { return }
+        LoginDefaults.standard.profiles = [defaultProfile]
+    }
+
+    private var defaultProfile: Profile? {
+        guard let app = AppUtils.getAllAppPaths().randomElement(),
+              let url = URL(string: "youtube.com")
+        else { return nil }
+
+        return Profile(name: "Default", apps: [app], urls: [url])
+    }
+
+    func subscribeToPersistedProfileChanges() {
+        LoginDefaults.standard.changed.map { $0.profiles }
+            .sink { [weak self] profiles in
+                guard let self else { return }
+                model.profiles = profiles
+            }
+            .store(in: &subscriptions)
     }
 }
 
