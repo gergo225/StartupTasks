@@ -12,48 +12,41 @@ struct MainView: View {
     @StateObject var viewModel: MainViewModel = MainViewModel()
 
     var body: some View {
-        MainViewContent(onAction: viewModel.onAction)
+        MainViewContent(model: viewModel.model, onAction: viewModel.onAction)
     }
 }
 
 struct MainViewContent: View {
+    @ObservedObject var model: MainModel
     var onAction: (MainAction) -> Void = { _ in }
 
     @State private var launchedAtLogin: Bool? = nil
-    @State private var profileViewModel = ProfileViewModel(appsViewModel: AppsViewModel(), urlsViewModel: UrlsViewModel())
-
-    @State private var dummyProfiles: [String] = ["Work", "Movie Night", "Blogging", "Add"]
-    @State private var selectedProfile: String?
+    @State private var selectedProfile: Profile?
 
     var body: some View {
         NavigationSplitView {
-            List(dummyProfiles, id: \.self, selection: $selectedProfile) { profile in
-                if profile == "Add" {
-                    Button {
-                        dummyProfiles.insert("New (\(dummyProfiles.count))", at: dummyProfiles.count - 1)
-                    } label: {
-                        Label("New", systemImage: "plus")
-                            .foregroundStyle(.secondary)
-                    }
-                    .buttonStyle(.plain)
-
-                } else {
+            VStack(alignment: .leading) {
+                List(model.profiles, id: \.name, selection: $selectedProfile) { profile in
                     NavigationLink(value: profile, label: {
-                        Label(profile, systemImage: "globe")
+                        Label(profile.name, systemImage: "folder")
                     })
                 }
+
+                addNewProfileButton
             }
         } detail: {
-            // TODO: display matching profile for selection
-            if selectedProfile != nil {
-                ProfilePage(profileViewModel: profileViewModel)
+            if let selectedProfile {
+                ProfileRouter.profilePage(for: selectedProfile)
             } else {
                 Text("No profile selected")
             }
         }
-        .navigationTitle(selectedProfile ?? "")
-
+        .navigationTitle(selectedProfile?.name ?? "")
+        .frame(minWidth: 600, minHeight: 400, maxHeight: .infinity)
         .onAppear {
+            if selectedProfile == nil {
+                selectedProfile = model.profiles.first
+            }
             launchedAtLogin = LoginDefaults.standard.launchedAtLogin
         }
         .onChange(of: launchedAtLogin) {
@@ -61,8 +54,39 @@ struct MainViewContent: View {
             onAction(.launchedAtLoginChanged(launchedAtLogin: launchedAtLogin))
         }
     }
+
+    private var addNewProfileButton: some View {
+        Button {
+            onAction(.addProfilePressed)
+        } label: {
+            Label("New", systemImage: "plus")
+                .foregroundStyle(.secondary)
+                .padding([.vertical, .leading])
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(.buttonBorder)
+        }
+        .buttonStyle(.plain)
+    }
 }
 
 #Preview {
-    MainView()
+    let safariPath = URL(string: "/Applications/Safari.app")!
+    let weatherPath = URL(string: "/System/Applications/Weather.app")!
+    let appPaths = [safariPath, weatherPath]
+
+    let urls = [
+        URL(string: "https://typeracer.com")!,
+        URL(string: "https://youtube.com")!,
+        URL(string: "https://facebook.com")!
+    ]
+
+    let profile = Profile(name: "Live Coding", apps: appPaths, urls: urls)
+    let profileViewModel = ProfileViewModel(profile: profile)
+
+    let model = MainModel()
+    model.profiles = [profile]
+    let viewModel = MainViewModel()
+    viewModel.model = model
+
+    return MainView(viewModel: viewModel)
 }

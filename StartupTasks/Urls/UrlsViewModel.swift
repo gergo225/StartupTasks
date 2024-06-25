@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+protocol UrlsProfileDelegate: AnyObject {
+    func addUrlToProfile(url: URL)
+    func removeUrlFromProfile(url: URL)
+}
+
 enum UrlPageAction {
     case addUrl(urlString: String)
     case removeUrl(url: URL)
@@ -16,12 +21,20 @@ enum UrlPageAction {
 }
 
 class UrlsPageModel: ObservableObject {
-    @Published var urlsToOpen: [URL] = LoginDefaults.standard.urlsToOpen
+    @Published var urlsToOpen: [URL] = []
 }
 
 class UrlsViewModel: ObservableObject {
     @Published var shouldPresentAddUrl: Bool = false
-    @ObservedObject var urlPageModel: UrlsPageModel = UrlsPageModel()
+    @Published var model: UrlsPageModel = UrlsPageModel()
+
+    weak var profileDelegate: UrlsProfileDelegate?
+
+    init(urls: [URL]) {
+        let model = UrlsPageModel()
+        model.urlsToOpen = urls
+        self.model = model
+    }
 
     func onAction(_ action: UrlPageAction) {
         switch action {
@@ -42,22 +55,16 @@ private extension UrlsViewModel {
     private func addUrl(urlString: String) {
         guard let validUrl = URL(string: urlString) else { return }
         
-        var urlsToOpen = LoginDefaults.standard.urlsToOpen
-        urlsToOpen.append(validUrl)
-        LoginDefaults.standard.urlsToOpen = urlsToOpen
+        profileDelegate?.addUrlToProfile(url: validUrl)
 
-        urlPageModel.urlsToOpen.append(validUrl)
+        model.urlsToOpen.append(validUrl)
     }
 
     private func removeUrl(_ url: URL) {
-        var urlsToOpen = LoginDefaults.standard.urlsToOpen
-        if let urlIndex = urlsToOpen.firstIndex(of: url) {
-            urlsToOpen.remove(at: urlIndex)
-            LoginDefaults.standard.urlsToOpen = urlsToOpen
-        }
+        profileDelegate?.removeUrlFromProfile(url: url)
 
-        if let urlIndex = urlPageModel.urlsToOpen.firstIndex(where: { $0 == url }) {
-            urlPageModel.urlsToOpen.remove(at: urlIndex)
+        if let urlIndex = model.urlsToOpen.firstIndex(where: { $0 == url }) {
+            model.urlsToOpen.remove(at: urlIndex)
         }
     }
 }

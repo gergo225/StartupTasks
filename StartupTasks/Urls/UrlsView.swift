@@ -9,12 +9,12 @@ import Foundation
 import SwiftUI
 
 struct UrlsView: View {
-    @StateObject var viewModel: UrlsViewModel = UrlsViewModel()
+    @ObservedObject var viewModel: UrlsViewModel
 
     @State private var urlString: String = ""
 
     var body: some View {
-        UrlsViewContent(model: viewModel.urlPageModel, onAction: viewModel.onAction)
+        UrlsViewContent(model: viewModel.model, onAction: viewModel.onAction)
             .sheet(isPresented: $viewModel.shouldPresentAddUrl) {
                addUrlPage
             }
@@ -49,10 +49,11 @@ struct UrlsViewContent: View {
 }
 
 #Preview {
-    let viewModel = UrlsViewModel()
-    viewModel.urlPageModel.urlsToOpen = [
+    let urls = [
         URL(string: "https://typeracer.com")!,
         URL(string: "https://youtube.com")!
     ]
+    let viewModel = UrlsViewModel(urls: urls)
+
     return UrlsView(viewModel: viewModel)
 }

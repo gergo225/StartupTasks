@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol AppsProfileDelegate: AnyObject {
+    func addAppToProfile(appItem: AppItem)
+    func removeAppFromProfile(appItem: AppItem)
+}
+
 enum AppsPageAction {
     case addApp(app: AppItem)
     case removeApp(app: AppItem)
@@ -15,12 +20,20 @@ enum AppsPageAction {
 }
 
 class AppsPageModel: ObservableObject {
-    @Published var addedApps: [AppItem] = LoginDefaults.standard.appPathsToOpen.compactMap { AppItem(appPath: $0) }
+    @Published var addedApps: [AppItem] = []
 }
 
 class AppsViewModel: ObservableObject {
-    @Published var model: AppsPageModel = AppsPageModel()
+    @Published var model: AppsPageModel
     @Published var shouldPresentAppSelection: Bool = false
+
+    weak var profileDelegate: AppsProfileDelegate?
+
+    init(apps: [AppItem]) {
+        let model = AppsPageModel()
+        model.addedApps = apps
+        self.model = model
+    }
 
     func onAction(_ action: AppsPageAction) {
         switch action {
@@ -41,19 +54,13 @@ private extension AppsViewModel {
     func addApp(_ app: AppItem) {
         guard !model.addedApps.contains(where: { $0.appPath == app.appPath }) else { return }
 
-        var appPathsToOpen = LoginDefaults.standard.appPathsToOpen
-        appPathsToOpen.append(app.appPath)
-        LoginDefaults.standard.appPathsToOpen = appPathsToOpen
-        
+        profileDelegate?.addAppToProfile(appItem: app)
+
         model.addedApps.append(app)
     }
 
     func removeApp(_ app: AppItem) {
-        var appPathsToOpen = LoginDefaults.standard.appPathsToOpen
-        if let appPathIndex = appPathsToOpen.firstIndex(of: app.appPath) {
-            appPathsToOpen.remove(at: appPathIndex)
-            LoginDefaults.standard.appPathsToOpen = appPathsToOpen
-        }
+        profileDelegate?.removeAppFromProfile(appItem: app)
 
         if let appIndex = model.addedApps.firstIndex(of: app) {
             model.addedApps.remove(at: appIndex)

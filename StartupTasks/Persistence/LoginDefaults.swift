@@ -16,8 +16,7 @@ final class LoginDefaults: NSObject {
     private enum Keys: String, CaseIterable {
         case launchedAfterLogin = "launchedAfterLogin"
         case finishedStartupProcess = "finishedStartupProcess"
-        case urlsToOpen = "urlsToOpen"
-        case appsPathsToOpen = "appPathsToOpen"
+        case profiles = "profiles"
     }
 
     private let changedInput: PassthroughSubject<LoginDefaults, Never>
@@ -62,25 +61,27 @@ final class LoginDefaults: NSObject {
         }
     }
 
-    var urlsToOpen: [URL] {
+    var profiles: [Profile] {
         set {
-            let urlStrings = newValue.map { $0.absoluteString }
-            userDefaults.set(urlStrings, forKey: Keys.urlsToOpen.rawValue)
+            let encoder = JSONEncoder()
+            do {
+                let encodedProfiles = try encoder.encode(newValue)
+                userDefaults.set(encodedProfiles, forKey: Keys.profiles.rawValue)
+            } catch {
+                print("Error encoding 'profiles': \(error.localizedDescription)")
+            }
         }
         get {
-            let urlStrings = userDefaults.value(forKey: Keys.urlsToOpen.rawValue) as? [String] ?? []
-            return urlStrings.compactMap { URL(string: $0) }
-        }
-    }
-
-    var appPathsToOpen: [URL] {
-        set {
-            let appPathStrings = newValue.map { $0.absoluteString }
-            userDefaults.set(appPathStrings, forKey: Keys.appsPathsToOpen.rawValue)
-        }
-        get {
-            let appPathStrings = userDefaults.value(forKey: Keys.appsPathsToOpen.rawValue) as? [String] ?? []
-            return appPathStrings.compactMap { URL(string: $0) }
+            guard let encodedProfiles = userDefaults.value(forKey: Keys.profiles.rawValue) as? Data else { return [] }
+            let decoder = JSONDecoder()
+            
+            do {
+                let decodedProfiles = try decoder.decode([Profile].self, from: encodedProfiles)
+                return decodedProfiles
+            } catch {
+                print("Error decoding 'profiles': \(error.localizedDescription)")
+                return []
+            }
         }
     }
 }

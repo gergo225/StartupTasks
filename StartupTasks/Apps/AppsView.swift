@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct AppsView: View {
-    @StateObject var viewModel: AppsViewModel = AppsViewModel()
+    @ObservedObject var viewModel: AppsViewModel
 
     var body: some View {
         AppsViewContent(model: viewModel.model, onAction: viewModel.onAction)
@@ -48,14 +48,12 @@ struct AppsViewContent: View {
 
 }
 
-
 #Preview {
-    let viewModel = AppsViewModel()
-
     let safari = AppItem(appPath: URL(string: "/Applications/Safari.app")!)!
     let weather = AppItem(appPath: URL(string: "/System/Applications/Weather.app")!)!
     let apps = [safari, weather]
-    viewModel.model.addedApps = apps
+
+    let viewModel = AppsViewModel(apps: apps)
 
     return AppsView(viewModel: viewModel)
 }

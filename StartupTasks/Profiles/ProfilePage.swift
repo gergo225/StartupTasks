@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfilePage: View {
-    let profileViewModel: ProfileViewModel
+    @ObservedObject var profileViewModel: ProfileViewModel
 
     var body: some View {
         ScrollView(.vertical) {
@@ -31,25 +31,21 @@ struct ProfilePage: View {
             .groupBoxStyle(ListGroupBoxStyle())
             .padding()
         }
-        .frame(minWidth: 400, minHeight: 400, maxHeight: .infinity)
     }
 }
 
 #Preview {
-    let appsViewModel = AppsViewModel()
+    let safariPath = URL(string: "/Applications/Safari.app")!
+    let weatherPath = URL(string: "/System/Applications/Weather.app")!
+    let appPaths = [safariPath, weatherPath]
 
-    let safari = AppItem(appPath: URL(string: "/Applications/Safari.app")!)!
-    let weather = AppItem(appPath: URL(string: "/System/Applications/Weather.app")!)!
-    let apps = [safari, weather]
-    appsViewModel.model.addedApps = apps
-
-    let urlsViewModel = UrlsViewModel()
-    urlsViewModel.urlPageModel.urlsToOpen = [
+    let urls = [
         URL(string: "https://typeracer.com")!,
         URL(string: "https://youtube.com")!
     ]
 
-    let profileViewModel = ProfileViewModel(appsViewModel: appsViewModel, urlsViewModel: urlsViewModel)
+    let profile = Profile(name: "Live Coding", apps: appPaths, urls: urls)
+    let profileViewModel = ProfileViewModel(profile: profile)
 
     return ProfilePage(profileViewModel: profileViewModel)
         .frame(height: 800)

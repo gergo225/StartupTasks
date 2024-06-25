@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E044EE02C289966004493D8 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E044EDF2C289966004493D8 /* Profile.swift */; };
 		4E0C408C2C02743500F08629 /* StartupTasksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C408B2C02743500F08629 /* StartupTasksApp.swift */; };
 		4E0C408E2C02743500F08629 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C408D2C02743500F08629 /* MainView.swift */; };
 		4E0C40902C02743600F08629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E0C408F2C02743600F08629 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 		4E7DA5F32C26ADB700FC3D72 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DA5F22C26ADB700FC3D72 /* ProfileViewModel.swift */; };
 		4E80ADE12C0D0AE7001E4E8C /* UrlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80ADE02C0D0AE7001E4E8C /* UrlsView.swift */; };
 		4E80ADE32C0D0B46001E4E8C /* UrlsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80ADE22C0D0B46001E4E8C /* UrlsViewModel.swift */; };
+		4E89D4F22C2B26940095D309 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E89D4F12C2B26940095D309 /* ProfileRouter.swift */; };
 		4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E75582C07B06000569A06 /* LoginDefaults.swift */; };
 		4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9210632C0B29E10035E1DE /* MainViewModel.swift */; };
 		4EA2AD6A2C14BE1D009AF89E /* AppSelectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2AD692C14BE1D009AF89E /* AppSelectionPage.swift */; };
@@ -36,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E044EDF2C289966004493D8 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		4E0C40882C02743500F08629 /* StartupTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StartupTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0C408B2C02743500F08629 /* StartupTasksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupTasksApp.swift; sourceTree = "<group>"; };
 		4E0C408D2C02743500F08629 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		4E7DA5F22C26ADB700FC3D72 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		4E80ADE02C0D0AE7001E4E8C /* UrlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlsView.swift; sourceTree = "<group>"; };
 		4E80ADE22C0D0B46001E4E8C /* UrlsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlsViewModel.swift; sourceTree = "<group>"; };
+		4E89D4F12C2B26940095D309 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		4E8E75582C07B06000569A06 /* LoginDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDefaults.swift; sourceTree = "<group>"; };
 		4E9210632C0B29E10035E1DE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4EA2AD692C14BE1D009AF89E /* AppSelectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSelectionPage.swift; sourceTree = "<group>"; };
@@ -78,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E044EDE2C28994F004493D8 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				4E8E75582C07B06000569A06 /* LoginDefaults.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		4E0C407F2C02743500F08629 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +109,7 @@
 		4E0C408A2C02743500F08629 /* StartupTasks */ = {
 			isa = PBXGroup;
 			children = (
+				4E044EDE2C28994F004493D8 /* Persistence */,
 				4E7DA5F12C26AD9C00FC3D72 /* Profiles */,
 				4EDF8FDD2C1F6D8B0057F07B /* UI */,
 				4EDF8FD82C1F518C0057F07B /* Urls */,
@@ -109,7 +122,6 @@
 				4E0C40912C02743600F08629 /* Preview Content */,
 				4E628A692C065CE200A89F2A /* SettingsPage.swift */,
 				4E450A652C0777F300B5BF4B /* Strings.swift */,
-				4E8E75582C07B06000569A06 /* LoginDefaults.swift */,
 				4E0FBE582C09FE6600D40E2B /* CombineExtensions.swift */,
 				4E9210632C0B29E10035E1DE /* MainViewModel.swift */,
 			);
@@ -129,6 +141,8 @@
 			children = (
 				4EB0900E2C235F2F00ED3537 /* ProfilePage.swift */,
 				4E7DA5F22C26ADB700FC3D72 /* ProfileViewModel.swift */,
+				4E044EDF2C289966004493D8 /* Profile.swift */,
+				4E89D4F12C2B26940095D309 /* ProfileRouter.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -245,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */,
+				4E044EE02C289966004493D8 /* Profile.swift in Sources */,
 				4EAEEB742C138AA10090BFA5 /* AppsList.swift in Sources */,
 				4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */,
 				4EB0900F2C235F2F00ED3537 /* ProfilePage.swift in Sources */,
@@ -262,6 +277,7 @@
 				4E7DA5F32C26ADB700FC3D72 /* ProfileViewModel.swift in Sources */,
 				4ECFA00D2C0E455B0078B00B /* AppsView.swift in Sources */,
 				4EDF8FDC2C1F52DD0057F07B /* Favicon.swift in Sources */,
+				4E89D4F22C2B26940095D309 /* ProfileRouter.swift in Sources */,
 				4E0FBE592C09FE6600D40E2B /* CombineExtensions.swift in Sources */,
 				4E0C408E2C02743500F08629 /* MainView.swift in Sources */,
 				4E0C408C2C02743500F08629 /* StartupTasksApp.swift in Sources */,
