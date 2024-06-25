@@ -22,7 +22,9 @@ struct AddUrlPage: View {
         }
         .onKeyPress(.return) {
             if !urlString.trimmingCharacters(in: .whitespaces).isEmpty {
-                onConfirm(urlString)
+                DispatchQueue.main.async {
+                    onConfirm(urlString)
+                }
                 return .handled
             } else {
                 return .ignored

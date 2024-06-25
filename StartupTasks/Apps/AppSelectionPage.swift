@@ -22,7 +22,9 @@ struct AppSelectionPage: View {
         }
         .onKeyPress(.return) {
             if let selectedApp {
-                onConfirm(selectedApp)
+                DispatchQueue.main.async {
+                    onConfirm(selectedApp)
+                }
                 return .handled
             } else {
                 return .ignored
