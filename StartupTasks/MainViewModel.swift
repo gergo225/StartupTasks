@@ -13,6 +13,7 @@ import Combine
 enum MainAction {
     case launchedAtLoginChanged(launchedAtLogin: Bool)
     case addProfilePressed
+    case removeProfile(profile: Profile)
 }
 
 class MainModel: ObservableObject {
@@ -36,6 +37,8 @@ class MainViewModel: ObservableObject {
             onLaunchedAtLoginChanged(to: launchedAtLogin)
         case .addProfilePressed:
             onAddProfilePressed()
+        case .removeProfile(let profile):
+            removeProfile(profile)
         }
     }
 }
@@ -79,8 +82,13 @@ private extension MainViewModel {
         var profileDefaults = LoginDefaults.standard.profiles
         profileDefaults.append(newProfile)
         LoginDefaults.standard.profiles = profileDefaults
+    }
 
-        model.profiles.append(newProfile)
+    func removeProfile(_ profile: Profile) {
+        var profiles = LoginDefaults.standard.profiles
+        guard let profileIndex = profiles.firstIndex(where: { $0.id == profile.id }) else { return }
+        profiles.remove(at: profileIndex)
+        LoginDefaults.standard.profiles = profiles
     }
 }
 

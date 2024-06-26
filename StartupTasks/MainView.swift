@@ -26,10 +26,15 @@ struct MainViewContent: View {
     var body: some View {
         NavigationSplitView {
             VStack(alignment: .leading) {
-                List(model.profiles, id: \.name, selection: $selectedProfile) { profile in
+                List(model.profiles, id: \.id, selection: $selectedProfile) { profile in
                     NavigationLink(value: profile, label: {
                         Label(profile.name, systemImage: "folder")
                     })
+                    .contextMenu {
+                        Button("Delete") {
+                            onAction(.removeProfile(profile: profile))
+                        }
+                    }
                 }
 
                 addNewProfileButton
