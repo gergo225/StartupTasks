@@ -56,15 +56,9 @@ private extension UrlsViewModel {
         guard let validUrl = URL(string: urlString) else { return }
         
         profileDelegate?.addUrlToProfile(url: validUrl)
-
-        model.urlsToOpen.append(validUrl)
     }
 
     private func removeUrl(_ url: URL) {
         profileDelegate?.removeUrlFromProfile(url: url)
-
-        if let urlIndex = model.urlsToOpen.firstIndex(where: { $0 == url }) {
-            model.urlsToOpen.remove(at: urlIndex)
-        }
     }
 }

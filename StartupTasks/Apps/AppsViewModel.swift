@@ -52,18 +52,10 @@ class AppsViewModel: ObservableObject {
 
 private extension AppsViewModel {
     func addApp(_ app: AppItem) {
-        guard !model.addedApps.contains(where: { $0.appPath == app.appPath }) else { return }
-
         profileDelegate?.addAppToProfile(appItem: app)
-
-        model.addedApps.append(app)
     }
 
     func removeApp(_ app: AppItem) {
         profileDelegate?.removeAppFromProfile(appItem: app)
-
-        if let appIndex = model.addedApps.firstIndex(of: app) {
-            model.addedApps.remove(at: appIndex)
-        }
     }
 }
