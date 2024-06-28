@@ -14,6 +14,9 @@ enum MainAction {
     case launchedAtLoginChanged(launchedAtLogin: Bool)
     case addProfilePressed
     case removeProfile(profile: Profile)
+    case renameProfilePressed(profile: Profile)
+    case cancelProfileRename
+    case renameProfile(profile: Profile, newName: String)
 }
 
 class MainModel: ObservableObject {
@@ -22,6 +25,7 @@ class MainModel: ObservableObject {
 
 class MainViewModel: ObservableObject {
     @ObservedObject var model: MainModel = MainModel()
+    @Published var profileToRename: Profile? = nil
 
     private var subscriptions = Set<AnyCancellable>()
 
@@ -39,6 +43,13 @@ class MainViewModel: ObservableObject {
             onAddProfilePressed()
         case .removeProfile(let profile):
             removeProfile(profile)
+        case .renameProfilePressed(let profile):
+            profileToRename = profile
+        case .cancelProfileRename:
+            profileToRename = nil
+        case .renameProfile(let profile, let newName):
+            renameProfile(profile, newName: newName)
+            profileToRename = nil
         }
     }
 }
@@ -88,6 +99,15 @@ private extension MainViewModel {
         var profiles = LoginDefaults.standard.profiles
         guard let profileIndex = profiles.firstIndex(where: { $0.id == profile.id }) else { return }
         profiles.remove(at: profileIndex)
+        LoginDefaults.standard.profiles = profiles
+    }
+
+    func renameProfile(_ profile: Profile, newName: String) {
+        guard profile.name != newName else { return }
+        
+        var profiles = LoginDefaults.standard.profiles
+        guard let profileIndex = profiles.firstIndex(where: { $0.id == profile.id }) else { return }
+        profiles[profileIndex].name = newName
         LoginDefaults.standard.profiles = profiles
     }
 }

@@ -13,6 +13,22 @@ struct MainView: View {
 
     var body: some View {
         MainViewContent(model: viewModel.model, onAction: viewModel.onAction)
+            .sheet(item: $viewModel.profileToRename) { profile in
+                renameProfilePage(for: profile)
+            }
+    }
+
+    private func renameProfilePage(for profile: Profile) -> some View {
+        TextInputPrompt(
+            onConfirm: { inputString in
+                viewModel.onAction(.renameProfile(profile: profile, newName: inputString))
+            },
+            onCancel: {
+                viewModel.onAction(.cancelProfileRename)
+            },
+            confirmButtonString: "Rename",
+            textPrompt: profile.name
+        )
     }
 }
 
@@ -31,6 +47,10 @@ struct MainViewContent: View {
                         Label(profile.name, systemImage: "folder")
                     })
                     .contextMenu {
+                        Button("Rename") {
+                            onAction(.renameProfilePressed(profile: profile))
+                        }
+
                         Button("Delete") {
                             onAction(.removeProfile(profile: profile))
                         }

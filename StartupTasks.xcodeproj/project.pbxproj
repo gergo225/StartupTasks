@@ -22,6 +22,7 @@
 		4E89D4F22C2B26940095D309 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E89D4F12C2B26940095D309 /* ProfileRouter.swift */; };
 		4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E75582C07B06000569A06 /* LoginDefaults.swift */; };
 		4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9210632C0B29E10035E1DE /* MainViewModel.swift */; };
+		4E96A1D52C2CAB5100A7D80D /* TextInputPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E96A1D42C2CAB5100A7D80D /* TextInputPrompt.swift */; };
 		4EA2AD6A2C14BE1D009AF89E /* AppSelectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2AD692C14BE1D009AF89E /* AppSelectionPage.swift */; };
 		4EA5F43A2C2493A400AEDB8C /* ListGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5F4392C2493A400AEDB8C /* ListGroupBoxStyle.swift */; };
 		4EAEEB742C138AA10090BFA5 /* AppsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAEEB732C138AA10090BFA5 /* AppsList.swift */; };
@@ -55,6 +56,7 @@
 		4E89D4F12C2B26940095D309 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		4E8E75582C07B06000569A06 /* LoginDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDefaults.swift; sourceTree = "<group>"; };
 		4E9210632C0B29E10035E1DE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		4E96A1D42C2CAB5100A7D80D /* TextInputPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputPrompt.swift; sourceTree = "<group>"; };
 		4EA2AD692C14BE1D009AF89E /* AppSelectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSelectionPage.swift; sourceTree = "<group>"; };
 		4EA5F4392C2493A400AEDB8C /* ListGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListGroupBoxStyle.swift; sourceTree = "<group>"; };
 		4EAEEB732C138AA10090BFA5 /* AppsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsList.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				4EDF8FDE2C1F6DA20057F07B /* EditableList.swift */,
 				4EA5F4392C2493A400AEDB8C /* ListGroupBoxStyle.swift */,
+				4E96A1D42C2CAB5100A7D80D /* TextInputPrompt.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				4EBB3E4D2C0F511C002B25A3 /* AppItemView.swift in Sources */,
 				4EA2AD6A2C14BE1D009AF89E /* AppSelectionPage.swift in Sources */,
 				4ECFA0112C0E46CC0078B00B /* AppItem.swift in Sources */,
+				4E96A1D52C2CAB5100A7D80D /* TextInputPrompt.swift in Sources */,
 				4EDF8FDF2C1F6DA20057F07B /* EditableList.swift in Sources */,
 				4ECFA0132C0E48A30078B00B /* AppUtils.swift in Sources */,
 				4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */,

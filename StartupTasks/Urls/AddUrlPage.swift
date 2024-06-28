@@ -14,47 +14,12 @@ struct AddUrlPage: View {
     var onCancel: () -> Void
 
     var body: some View {
-        VStack {
-            Spacer()
-            urlInput
-            Spacer()
-            buttonRow
-        }
-        .onKeyPress(.return) {
-            if !urlString.trimmingCharacters(in: .whitespaces).isEmpty {
-                DispatchQueue.main.async {
-                    onConfirm(urlString)
-                }
-                return .handled
-            } else {
-                return .ignored
-            }
-        }
-        .padding()
-        .frame(minWidth: 350, maxWidth: 600, minHeight: 100, maxHeight: 150)
-    }
-
-    private var urlInput: some View {
-        TextField(text: $urlString) {
-            Text("URL to open")
-        }
-    }
-
-    private var buttonRow: some View {
-        HStack {
-            Spacer()
-
-            Button(role: .cancel, action: onCancel) {
-                Text(Strings.cancelLabel)
-            }
-
-            Button {
-                onConfirm(urlString)
-            } label: {
-                Text(Strings.addLabel)
-            }
-            .buttonStyle(.borderedProminent)
-        }
+        TextInputPrompt(
+            onConfirm: onConfirm,
+            onCancel: onCancel,
+            confirmButtonString: Strings.addLabel,
+            textPrompt: "Website to open"
+        )
     }
 }
 

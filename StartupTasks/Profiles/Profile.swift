@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Profile: Hashable {
+struct Profile: Hashable, Identifiable {
     var id: UUID
     var name: String
     var apps: [AppItem]
