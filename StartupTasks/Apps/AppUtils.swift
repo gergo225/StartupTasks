@@ -8,7 +8,7 @@
 import Foundation
 import AppKit
 
-class AppUtils {
+final class AppUtils {
     static func getAllAppPaths() -> [URL] {
         var appPaths = [URL]()
 

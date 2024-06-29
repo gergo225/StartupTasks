@@ -43,18 +43,7 @@ struct MainViewContent: View {
         NavigationSplitView {
             VStack(alignment: .leading) {
                 List(model.profiles, id: \.id, selection: $selectedProfile) { profile in
-                    NavigationLink(value: profile, label: {
-                        Label(profile.name, systemImage: "folder")
-                    })
-                    .contextMenu {
-                        Button("Rename") {
-                            onAction(.renameProfilePressed(profile: profile))
-                        }
-
-                        Button("Delete") {
-                            onAction(.removeProfile(profile: profile))
-                        }
-                    }
+                    profileItem(for: profile)
                 }
 
                 addNewProfileButton
@@ -67,6 +56,22 @@ struct MainViewContent: View {
             }
         }
         .navigationTitle(selectedProfile?.name ?? "")
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    guard let selectedProfile else { return }
+                    onAction(.startProfilePressed(profile: selectedProfile))
+                } label: {
+                    Image(systemName: "play.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 12, height: 12)
+                        .padding(8)
+                        .clipShape(.rect(cornerRadius: 8))
+                }
+                .help("Start profile")
+            }
+        }
         .frame(minWidth: 600, minHeight: 400, maxHeight: .infinity)
         .onAppear {
             if selectedProfile == nil {
@@ -77,6 +82,21 @@ struct MainViewContent: View {
         .onChange(of: launchedAtLogin) {
             guard let launchedAtLogin else { return }
             onAction(.launchedAtLoginChanged(launchedAtLogin: launchedAtLogin))
+        }
+    }
+
+    private func profileItem(for profile: Profile) -> some View {
+        NavigationLink(value: profile, label: {
+            Label(profile.name, systemImage: "folder")
+        })
+        .contextMenu {
+            Button("Rename") {
+                onAction(.renameProfilePressed(profile: profile))
+            }
+
+            Button("Delete") {
+                onAction(.removeProfile(profile: profile))
+            }
         }
     }
 

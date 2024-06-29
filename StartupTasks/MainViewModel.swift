@@ -17,6 +17,7 @@ enum MainAction {
     case renameProfilePressed(profile: Profile)
     case cancelProfileRename
     case renameProfile(profile: Profile, newName: String)
+    case startProfilePressed(profile: Profile)
 }
 
 class MainModel: ObservableObject {
@@ -50,6 +51,8 @@ class MainViewModel: ObservableObject {
         case .renameProfile(let profile, let newName):
             renameProfile(profile, newName: newName)
             profileToRename = nil
+        case .startProfilePressed(let profile):
+            startProfile(profile)
         }
     }
 }
@@ -83,7 +86,7 @@ private extension MainViewModel {
     func onLaunchedAtLoginChanged(to launchedAtLogin: Bool) {
         guard launchedAtLogin, !LoginDefaults.standard.finishedStartupProcess else { return }
         LoginDefaults.standard.finishedStartupProcess = true
-        runStartupProcesses()
+//        runStartupProcesses() // TODO: add later which profile to start by default (after login)
     }
 
     func onAddProfilePressed() {
@@ -113,25 +116,21 @@ private extension MainViewModel {
 }
 
 private extension MainViewModel {
-    private func runStartupProcesses() {
-        openAddedUrls()
-        openAddedApps()
+    private func startProfile(_ profile: Profile) {
+        openUrls(profile.urls)
+        openApps(profile.apps.map { $0.appPath })
     }
 
-    // TODO: open later based on which profile is set as "startup profile" (ie. which to run right after login)
-    private func openAddedUrls() {
-//        let urls = LoginDefaults.standard.urlsToOpen
-//
-//        urls.forEach { url in
-//            NSWorkspace.shared.open(url)
-//        }
+    private func openUrls(_ urls: [URL]) {
+        urls.forEach { url in
+            NSWorkspace.shared.open(url.withHttp)
+        }
     }
 
-    private func openAddedApps() {
-//        let appPaths = LoginDefaults.standard.appPathsToOpen
-//        let openConfiguration = NSWorkspace.OpenConfiguration()
-//        appPaths.forEach { appPath in
-//            NSWorkspace.shared.openApplication(at: appPath, configuration: openConfiguration)
-//        }
+    private func openApps(_ appPaths: [URL]) {
+        let openConfiguration = NSWorkspace.OpenConfiguration()
+        appPaths.forEach { appPath in
+            NSWorkspace.shared.openApplication(at: appPath, configuration: openConfiguration)
+        }
     }
 }
