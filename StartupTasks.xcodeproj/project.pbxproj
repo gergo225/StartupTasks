@@ -33,6 +33,10 @@
 		4ECFA00F2C0E45A00078B00B /* AppsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA00E2C0E45A00078B00B /* AppsViewModel.swift */; };
 		4ECFA0112C0E46CC0078B00B /* AppItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA0102C0E46CC0078B00B /* AppItem.swift */; };
 		4ECFA0132C0E48A30078B00B /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA0122C0E48A30078B00B /* AppUtils.swift */; };
+		4EDC62372C3143D000C252CB /* MenuBarProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC62362C3143D000C252CB /* MenuBarProfiles.swift */; };
+		4EDC62392C3144F500C252CB /* MenuBarProfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC62382C3144F500C252CB /* MenuBarProfilesViewModel.swift */; };
+		4EDC623B2C31460700C252CB /* ProfileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC623A2C31460700C252CB /* ProfileUtils.swift */; };
+		4EDC623E2C3151C700C252CB /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4EDC623D2C3151C700C252CB /* MenuBarExtraAccess */; };
 		4EDF8FDA2C1F52200057F07B /* UrlItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FD92C1F52200057F07B /* UrlItemView.swift */; };
 		4EDF8FDC2C1F52DD0057F07B /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */; };
 		4EDF8FDF2C1F6DA20057F07B /* EditableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF8FDE2C1F6DA20057F07B /* EditableList.swift */; };
@@ -68,6 +72,9 @@
 		4ECFA00E2C0E45A00078B00B /* AppsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewModel.swift; sourceTree = "<group>"; };
 		4ECFA0102C0E46CC0078B00B /* AppItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppItem.swift; sourceTree = "<group>"; };
 		4ECFA0122C0E48A30078B00B /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
+		4EDC62362C3143D000C252CB /* MenuBarProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarProfiles.swift; sourceTree = "<group>"; };
+		4EDC62382C3144F500C252CB /* MenuBarProfilesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarProfilesViewModel.swift; sourceTree = "<group>"; };
+		4EDC623A2C31460700C252CB /* ProfileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUtils.swift; sourceTree = "<group>"; };
 		4EDF8FD92C1F52200057F07B /* UrlItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlItemView.swift; sourceTree = "<group>"; };
 		4EDF8FDB2C1F52DD0057F07B /* Favicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favicon.swift; sourceTree = "<group>"; };
 		4EDF8FDE2C1F6DA20057F07B /* EditableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableList.swift; sourceTree = "<group>"; };
@@ -79,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EDC623E2C3151C700C252CB /* MenuBarExtraAccess in Frameworks */,
 				4E628A682C065BC000A89F2A /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,10 +151,13 @@
 		4E7DA5F12C26AD9C00FC3D72 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
+				4EDC62362C3143D000C252CB /* MenuBarProfiles.swift */,
 				4EB0900E2C235F2F00ED3537 /* ProfilePage.swift */,
 				4E7DA5F22C26ADB700FC3D72 /* ProfileViewModel.swift */,
 				4E044EDF2C289966004493D8 /* Profile.swift */,
 				4E89D4F12C2B26940095D309 /* ProfileRouter.swift */,
+				4EDC62382C3144F500C252CB /* MenuBarProfilesViewModel.swift */,
+				4EDC623A2C31460700C252CB /* ProfileUtils.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -206,6 +217,7 @@
 			name = StartupTasks;
 			packageProductDependencies = (
 				4E628A672C065BC000A89F2A /* LaunchAtLogin */,
+				4EDC623D2C3151C700C252CB /* MenuBarExtraAccess */,
 			);
 			productName = StartupTasks;
 			productReference = 4E0C40882C02743500F08629 /* StartupTasks.app */;
@@ -237,6 +249,7 @@
 			mainGroup = 4E0C407F2C02743500F08629;
 			packageReferences = (
 				4E628A662C065BC000A89F2A /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+				4EDC623C2C3151C700C252CB /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
 			);
 			productRefGroup = 4E0C40892C02743500F08629 /* Products */;
 			projectDirPath = "";
@@ -266,11 +279,13 @@
 			files = (
 				4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */,
 				4E044EE02C289966004493D8 /* Profile.swift in Sources */,
+				4EDC62372C3143D000C252CB /* MenuBarProfiles.swift in Sources */,
 				4EAEEB742C138AA10090BFA5 /* AppsList.swift in Sources */,
 				4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */,
 				4EB0900F2C235F2F00ED3537 /* ProfilePage.swift in Sources */,
 				4E80ADE32C0D0B46001E4E8C /* UrlsViewModel.swift in Sources */,
 				4EDF8FE12C1F76990057F07B /* AddUrlPage.swift in Sources */,
+				4EDC62392C3144F500C252CB /* MenuBarProfilesViewModel.swift in Sources */,
 				4EDF8FDA2C1F52200057F07B /* UrlItemView.swift in Sources */,
 				4E86FB6A2C30886100EBD793 /* UrlUtils.swift in Sources */,
 				4EBB3E4D2C0F511C002B25A3 /* AppItemView.swift in Sources */,
@@ -281,6 +296,7 @@
 				4ECFA0132C0E48A30078B00B /* AppUtils.swift in Sources */,
 				4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */,
 				4EA5F43A2C2493A400AEDB8C /* ListGroupBoxStyle.swift in Sources */,
+				4EDC623B2C31460700C252CB /* ProfileUtils.swift in Sources */,
 				4E450A662C0777F300B5BF4B /* Strings.swift in Sources */,
 				4E7DA5F32C26ADB700FC3D72 /* ProfileViewModel.swift in Sources */,
 				4ECFA00D2C0E455B0078B00B /* AppsView.swift in Sources */,
@@ -505,6 +521,14 @@
 				kind = branch;
 			};
 		};
+		4EDC623C2C3151C700C252CB /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/MenuBarExtraAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -512,6 +536,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E628A662C065BC000A89F2A /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
 			productName = LaunchAtLogin;
+		};
+		4EDC623D2C3151C700C252CB /* MenuBarExtraAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EDC623C2C3151C700C252CB /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
+			productName = MenuBarExtraAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

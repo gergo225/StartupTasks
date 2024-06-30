@@ -52,7 +52,7 @@ class MainViewModel: ObservableObject {
             renameProfile(profile, newName: newName)
             profileToRename = nil
         case .startProfilePressed(let profile):
-            startProfile(profile)
+            ProfileUtils.startProfile(profile)
         }
     }
 }
@@ -112,25 +112,5 @@ private extension MainViewModel {
         guard let profileIndex = profiles.firstIndex(where: { $0.id == profile.id }) else { return }
         profiles[profileIndex].name = newName
         LoginDefaults.standard.profiles = profiles
-    }
-}
-
-private extension MainViewModel {
-    private func startProfile(_ profile: Profile) {
-        openUrls(profile.urls)
-        openApps(profile.apps.map { $0.appPath })
-    }
-
-    private func openUrls(_ urls: [URL]) {
-        urls.forEach { url in
-            NSWorkspace.shared.open(url.withHttp)
-        }
-    }
-
-    private func openApps(_ appPaths: [URL]) {
-        let openConfiguration = NSWorkspace.OpenConfiguration()
-        appPaths.forEach { appPath in
-            NSWorkspace.shared.openApplication(at: appPath, configuration: openConfiguration)
-        }
     }
 }

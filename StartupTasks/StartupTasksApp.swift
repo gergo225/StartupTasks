@@ -25,6 +25,8 @@ struct StartupTasksApp: App {
             MainView()
         }
 
+        MenuBarProfiles()
+
         Settings {
             SettingsPage()
         }
