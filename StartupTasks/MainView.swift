@@ -94,7 +94,7 @@ struct MainViewContent: View {
                 onAction(.renameProfilePressed(profile: profile))
             }
 
-            Button("Delete") {
+            Button("Delete", role: .destructive) {
                 onAction(.removeProfile(profile: profile))
             }
         }

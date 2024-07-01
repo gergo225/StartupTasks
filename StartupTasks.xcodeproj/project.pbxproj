@@ -19,6 +19,7 @@
 		4E7DA5F32C26ADB700FC3D72 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DA5F22C26ADB700FC3D72 /* ProfileViewModel.swift */; };
 		4E80ADE12C0D0AE7001E4E8C /* UrlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80ADE02C0D0AE7001E4E8C /* UrlsView.swift */; };
 		4E80ADE32C0D0B46001E4E8C /* UrlsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80ADE22C0D0B46001E4E8C /* UrlsViewModel.swift */; };
+		4E81D2042C33221D0007B6B9 /* FluidMenuBarExtra in Frameworks */ = {isa = PBXBuildFile; productRef = 4E81D2032C33221D0007B6B9 /* FluidMenuBarExtra */; };
 		4E86FB6A2C30886100EBD793 /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86FB692C30886100EBD793 /* UrlUtils.swift */; };
 		4E89D4F22C2B26940095D309 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E89D4F12C2B26940095D309 /* ProfileRouter.swift */; };
 		4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E75582C07B06000569A06 /* LoginDefaults.swift */; };
@@ -87,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EDC623E2C3151C700C252CB /* MenuBarExtraAccess in Frameworks */,
+				4E81D2042C33221D0007B6B9 /* FluidMenuBarExtra in Frameworks */,
 				4E628A682C065BC000A89F2A /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +220,7 @@
 			packageProductDependencies = (
 				4E628A672C065BC000A89F2A /* LaunchAtLogin */,
 				4EDC623D2C3151C700C252CB /* MenuBarExtraAccess */,
+				4E81D2032C33221D0007B6B9 /* FluidMenuBarExtra */,
 			);
 			productName = StartupTasks;
 			productReference = 4E0C40882C02743500F08629 /* StartupTasks.app */;
@@ -250,6 +253,7 @@
 			packageReferences = (
 				4E628A662C065BC000A89F2A /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 				4EDC623C2C3151C700C252CB /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
+				4E81D2022C33221D0007B6B9 /* XCRemoteSwiftPackageReference "fluid-menu-bar-extra" */,
 			);
 			productRefGroup = 4E0C40892C02743500F08629 /* Products */;
 			projectDirPath = "";
@@ -521,6 +525,14 @@
 				kind = branch;
 			};
 		};
+		4E81D2022C33221D0007B6B9 /* XCRemoteSwiftPackageReference "fluid-menu-bar-extra" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lfroms/fluid-menu-bar-extra";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		4EDC623C2C3151C700C252CB /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/orchetect/MenuBarExtraAccess";
@@ -536,6 +548,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E628A662C065BC000A89F2A /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
 			productName = LaunchAtLogin;
+		};
+		4E81D2032C33221D0007B6B9 /* FluidMenuBarExtra */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E81D2022C33221D0007B6B9 /* XCRemoteSwiftPackageReference "fluid-menu-bar-extra" */;
+			productName = FluidMenuBarExtra;
 		};
 		4EDC623D2C3151C700C252CB /* MenuBarExtraAccess */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -8,11 +8,18 @@
 import SwiftUI
 import AppKit
 import LaunchAtLogin
+import FluidMenuBarExtra
 
 class AppDelegate: NSObject, NSApplicationDelegate {
+    private var menuBarExtra: FluidMenuBarExtra?
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         LoginDefaults.standard.launchedAtLogin = LaunchAtLogin.wasLaunchedAtLogin
         LoginDefaults.standard.finishedStartupProcess = false
+        
+        menuBarExtra = FluidMenuBarExtra(title: "Startup Tasks") {
+            MenuBarProfiles()
+        }
     }
 }
 
@@ -24,8 +31,6 @@ struct StartupTasksApp: App {
         WindowGroup {
             MainView()
         }
-
-        MenuBarProfiles()
 
         Settings {
             SettingsPage()

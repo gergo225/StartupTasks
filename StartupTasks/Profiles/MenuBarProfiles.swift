@@ -8,25 +8,12 @@
 import SwiftUI
 import MenuBarExtraAccess
 
-struct MenuBarProfiles: Scene {
+struct MenuBarProfiles: View {
     @StateObject private var viewModel = MenuBarProfilesViewModel()
-    @State private var isMenuBarPresented = false
 
-    var body: some Scene {
-        MenuBarExtra("Startup Profiles") {
-            MenuBarProfilesContent(profiles: viewModel.profiles) {
-                viewModel.onProfileSelected($0)
-                isMenuBarPresented = false
-            }
-        }
-        // TODO: fix: profiles get updated in VM, but not in View
-        .onChange(of: viewModel.profiles) { _, newValue in
-            print("mylog - profiles: \(newValue.count)")
-        }
-        .menuBarExtraStyle(.window)
-        .menuBarExtraAccess(isPresented: $isMenuBarPresented)
+    var body: some View {
+        MenuBarProfilesContent(profiles: viewModel.profiles, onSelected: viewModel.onProfileSelected)
     }
-
 }
 
 struct MenuBarProfilesContent: View {
@@ -71,7 +58,7 @@ struct MenuBarButtonStyle: ButtonStyle {
         configuration.label
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(8)
-            .background(configuration.isPressed ? .blue : isHovered ? Color.secondary : .clear)
+            .background(configuration.isPressed ? .blue : isHovered ? .black.opacity(0.3) : .clear)
             .clipShape(.rect(cornerRadius: 4))
             .padding(.horizontal, 4)
     }
