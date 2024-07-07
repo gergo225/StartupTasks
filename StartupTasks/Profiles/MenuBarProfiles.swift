@@ -24,15 +24,21 @@ struct MenuBarProfilesContent: View {
 
     var body: some View {
         VStack(spacing: 4) {
-            ForEach(profiles) { profile in
-                profileItem(for: profile)
-                    .onHover {
-                        if $0 {
-                            hovered = profile
-                        } else {
-                            hovered = nil
+            if profiles.isEmpty {
+                Text("No profiles to run")
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 8)
+            } else {
+                ForEach(profiles) { profile in
+                    profileItem(for: profile)
+                        .onHover {
+                            if $0 {
+                                hovered = profile
+                            } else {
+                                hovered = nil
+                            }
                         }
-                    }
+                }
             }
         }
         .padding(.vertical, 4)
