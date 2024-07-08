@@ -20,12 +20,16 @@ class ProfileViewModel: ObservableObject {
     @ObservedObject var appsViewModel: AppsViewModel
     @ObservedObject var urlsViewModel: UrlsViewModel
 
+    @ObservationIgnored
+    private let dataSource: ProfilesDataSource
+
     private let profile: Profile
 
     init(profile: Profile) {
         self.profile = profile
         self.appsViewModel = AppsViewModel(apps: profile.apps)
         self.urlsViewModel = UrlsViewModel(urls: profile.urls)
+        self.dataSource = ProfilesDataSourceImpl.shared
 
         self.appsViewModel.profileDelegate = self
         self.urlsViewModel.profileDelegate = self
@@ -34,51 +38,38 @@ class ProfileViewModel: ObservableObject {
 
 extension ProfileViewModel: AppsProfileDelegate, UrlsProfileDelegate {
     func addAppToProfile(appItem: AppItem) {
-        guard var currentProfile = currentProfileFromUserDefaults else { return }
+        guard !profile.apps.contains(where: { $0.appPath == appItem.appPath }) else { return }
 
-        guard !currentProfile.apps.contains(where: { $0.appPath == appItem.appPath }) else { return }
-        currentProfile.apps.append(appItem)
+        var updatedProfile = profile
+        updatedProfile.apps.append(appItem)
 
-        updateCurrentProfileInUserDefaults(newValue: currentProfile)
+        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
     }
 
     func addUrlToProfile(url: URL) {
-        guard var currentProfile = currentProfileFromUserDefaults else { return }
+        guard !profile.urls.contains(where: { $0 == url }) else { return }
 
-        guard !currentProfile.urls.contains(where: { $0 == url }) else { return }
-        currentProfile.urls.append(url)
+        var updatedProfile = profile
+        updatedProfile.urls.append(url)
 
-        updateCurrentProfileInUserDefaults(newValue: currentProfile)
+        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
     }
 
     func removeAppFromProfile(appItem: AppItem) {
-        guard var currentProfile = currentProfileFromUserDefaults else { return }
+        guard let appIndex = profile.apps.firstIndex(where: { $0.appPath == appItem.appPath }) else { return }
 
-        guard let appIndex = currentProfile.apps.firstIndex(where: { $0.appPath == appItem.appPath }) else { return }
-        currentProfile.apps.remove(at: appIndex)
+        var updatedProfile = profile
+        updatedProfile.apps.remove(at: appIndex)
 
-        updateCurrentProfileInUserDefaults(newValue: currentProfile)
+        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
     }
 
     func removeUrlFromProfile(url: URL) {
-        guard var currentProfile = currentProfileFromUserDefaults else { return }
+        guard let urlIndex = profile.urls.firstIndex(where: { $0 == url }) else { return }
 
-        guard let urlIndex = currentProfile.urls.firstIndex(where: { $0 == url }) else { return }
-        currentProfile.urls.remove(at: urlIndex)
+        var updatedProfile = profile
+        updatedProfile.urls.remove(at: urlIndex)
 
-        updateCurrentProfileInUserDefaults(newValue: currentProfile)
-    }
-
-    private var currentProfileFromUserDefaults: Profile? {
-        LoginDefaults.standard.profiles.first(where: { $0.id == profile.id })
-    }
-
-    private func updateCurrentProfileInUserDefaults(newValue: Profile) {
-        var profiles = LoginDefaults.standard.profiles
-
-        guard let profileIndex = profiles.firstIndex(where: { $0.id == profile.id }) else { return }
-        profiles[profileIndex] = newValue
-
-        LoginDefaults.standard.profiles = profiles
+        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
     }
 }

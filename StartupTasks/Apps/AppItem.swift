@@ -7,26 +7,35 @@
 
 import Foundation
 import AppKit
+import SwiftData
 
-struct AppItem: Hashable {
+@Model
+class AppItem: Hashable {
     var name: String
-    var icon: NSImage?
     var appPath: URL
+
+    var icon: NSImage? {
+        NSWorkspace.shared.icon(forFile: appPath.relativePath)
+    }
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(appPath)
     }
+
+    private init(name: String, appPath: URL) {
+        self.name = name
+        self.appPath = appPath
+    }
 }
 
 extension AppItem {
-    init?(appPath: URL) {
+    convenience init?(appPath: URL) {
         let pathExists = FileManager.default.fileExists(atPath: appPath.relativePath)
         let pathIsValidApp = appPath.pathExtension == "app"
 
         guard pathExists, pathIsValidApp else { return nil }
 
-        self.name = appPath.deletingPathExtension().lastPathComponent
-        self.icon = NSWorkspace.shared.icon(forFile: appPath.relativePath)
-        self.appPath = appPath
+        let name = appPath.deletingPathExtension().lastPathComponent
+        self.init(name: name, appPath: appPath)
     }
 }

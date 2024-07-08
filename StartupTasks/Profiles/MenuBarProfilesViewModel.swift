@@ -9,18 +9,21 @@ import Foundation
 import Combine
 
 final class MenuBarProfilesViewModel: ObservableObject {
-    @Published private(set) var profiles: [Profile] = LoginDefaults.standard.profiles
+    @Published private(set) var profiles: [Profile] = []
 
+    @ObservationIgnored
+    private let dataSource: ProfilesDataSource
+    
     private var subscriptions = Set<AnyCancellable>()
 
     init() {
+        dataSource = ProfilesDataSourceImpl.shared
         subscribeToProfileChanges()
     }
 
     private func subscribeToProfileChanges() {
-        LoginDefaults.standard.changed.map { $0.profiles }.sink { [weak self] profiles in
-            guard let self else { return }
-            self.profiles = profiles
+        dataSource.changed.sink { [weak self] profiles in
+            self?.profiles = profiles
         }
         .store(in: &subscriptions)
     }

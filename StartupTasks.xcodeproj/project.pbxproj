@@ -28,6 +28,8 @@
 		4EA2AD6A2C14BE1D009AF89E /* AppSelectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2AD692C14BE1D009AF89E /* AppSelectionPage.swift */; };
 		4EA5F43A2C2493A400AEDB8C /* ListGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5F4392C2493A400AEDB8C /* ListGroupBoxStyle.swift */; };
 		4EAEEB742C138AA10090BFA5 /* AppsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAEEB732C138AA10090BFA5 /* AppsList.swift */; };
+		4EAFFC322C37186F004F6EE5 /* ProfilesDataSourceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFFC312C37186F004F6EE5 /* ProfilesDataSourceImpl.swift */; };
+		4EAFFC342C371A14004F6EE5 /* ProfilesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFFC332C371A14004F6EE5 /* ProfilesDataSource.swift */; };
 		4EB0900F2C235F2F00ED3537 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB0900E2C235F2F00ED3537 /* ProfilePage.swift */; };
 		4EBB3E4D2C0F511C002B25A3 /* AppItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB3E4C2C0F511C002B25A3 /* AppItemView.swift */; };
 		4ECFA00D2C0E455B0078B00B /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFA00C2C0E455B0078B00B /* AppsView.swift */; };
@@ -67,6 +69,8 @@
 		4EA2AD692C14BE1D009AF89E /* AppSelectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSelectionPage.swift; sourceTree = "<group>"; };
 		4EA5F4392C2493A400AEDB8C /* ListGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListGroupBoxStyle.swift; sourceTree = "<group>"; };
 		4EAEEB732C138AA10090BFA5 /* AppsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsList.swift; sourceTree = "<group>"; };
+		4EAFFC312C37186F004F6EE5 /* ProfilesDataSourceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesDataSourceImpl.swift; sourceTree = "<group>"; };
+		4EAFFC332C371A14004F6EE5 /* ProfilesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesDataSource.swift; sourceTree = "<group>"; };
 		4EB0900E2C235F2F00ED3537 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		4EBB3E4C2C0F511C002B25A3 /* AppItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppItemView.swift; sourceTree = "<group>"; };
 		4ECFA00C2C0E455B0078B00B /* AppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsView.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 				4E89D4F12C2B26940095D309 /* ProfileRouter.swift */,
 				4EDC62382C3144F500C252CB /* MenuBarProfilesViewModel.swift */,
 				4EDC623A2C31460700C252CB /* ProfileUtils.swift */,
+				4EAFFC312C37186F004F6EE5 /* ProfilesDataSourceImpl.swift */,
+				4EAFFC332C371A14004F6EE5 /* ProfilesDataSource.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 			files = (
 				4E9210642C0B29E10035E1DE /* MainViewModel.swift in Sources */,
 				4E044EE02C289966004493D8 /* Profile.swift in Sources */,
+				4EAFFC342C371A14004F6EE5 /* ProfilesDataSource.swift in Sources */,
 				4EDC62372C3143D000C252CB /* MenuBarProfiles.swift in Sources */,
 				4EAEEB742C138AA10090BFA5 /* AppsList.swift in Sources */,
 				4E628A6A2C065CE200A89F2A /* SettingsPage.swift in Sources */,
@@ -296,6 +303,7 @@
 				4EA2AD6A2C14BE1D009AF89E /* AppSelectionPage.swift in Sources */,
 				4ECFA0112C0E46CC0078B00B /* AppItem.swift in Sources */,
 				4E96A1D52C2CAB5100A7D80D /* TextInputPrompt.swift in Sources */,
+				4EAFFC322C37186F004F6EE5 /* ProfilesDataSourceImpl.swift in Sources */,
 				4EDF8FDF2C1F6DA20057F07B /* EditableList.swift in Sources */,
 				4ECFA0132C0E48A30078B00B /* AppUtils.swift in Sources */,
 				4E8E75592C07B06000569A06 /* LoginDefaults.swift in Sources */,

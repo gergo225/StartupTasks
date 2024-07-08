@@ -21,17 +21,22 @@ enum MainAction {
 }
 
 class MainModel: ObservableObject {
-    @Published var profiles: [Profile] = LoginDefaults.standard.profiles
+    @Published var profiles: [Profile] = []
 }
 
 class MainViewModel: ObservableObject {
     @ObservedObject var model: MainModel = MainModel()
     @Published var profileToRename: Profile? = nil
 
+    @ObservationIgnored
+    private let dataSource: ProfilesDataSource
+
     private var subscriptions = Set<AnyCancellable>()
 
     init() {
-        subscribeToPersistedProfileChanges()
+        dataSource = ProfilesDataSourceImpl.shared
+        model.profiles = dataSource.fetchProfiles()
+        subscribeToProfileChanges()
 
         addDefaultProfileIfNeeded()
     }
@@ -61,7 +66,7 @@ private extension MainViewModel {
     func addDefaultProfileIfNeeded() {
         guard model.profiles.isEmpty else { return }
         guard let defaultProfile else { return }
-        LoginDefaults.standard.profiles = [defaultProfile]
+        dataSource.addProfile(defaultProfile)
     }
 
     private var defaultProfile: Profile? {
@@ -72,13 +77,11 @@ private extension MainViewModel {
         return Profile(name: "Default", apps: [app], urls: [url])
     }
 
-    func subscribeToPersistedProfileChanges() {
-        LoginDefaults.standard.changed.map { $0.profiles }
-            .sink { [weak self] profiles in
-                guard let self else { return }
-                model.profiles = profiles
-            }
-            .store(in: &subscriptions)
+    func subscribeToProfileChanges() {
+        dataSource.changed.sink { [weak self] profiles in
+            self?.model.profiles = profiles
+        }
+        .store(in: &subscriptions)
     }
 }
 
@@ -91,26 +94,19 @@ private extension MainViewModel {
 
     func onAddProfilePressed() {
         let emptyUrls: [URL] = []
-        let newProfile = Profile(name: "New Profile (\(model.profiles.count))", apps: emptyUrls, urls: emptyUrls)
+        let newProfileName = model.profiles.count == 0 ? "New Profile" : "New Profile (\(model.profiles.count)"
+        let newProfile = Profile(name: newProfileName, apps: emptyUrls, urls: emptyUrls)
 
-        var profileDefaults = LoginDefaults.standard.profiles
-        profileDefaults.append(newProfile)
-        LoginDefaults.standard.profiles = profileDefaults
+        dataSource.addProfile(newProfile)
     }
 
     func removeProfile(_ profile: Profile) {
-        var profiles = LoginDefaults.standard.profiles
-        guard let profileIndex = profiles.firstIndex(where: { $0.id == profile.id }) else { return }
-        profiles.remove(at: profileIndex)
-        LoginDefaults.standard.profiles = profiles
+        dataSource.removeProfile(profile.id)
     }
 
     func renameProfile(_ profile: Profile, newName: String) {
         guard profile.name != newName else { return }
         
-        var profiles = LoginDefaults.standard.profiles
-        guard let profileIndex = profiles.firstIndex(where: { $0.id == profile.id }) else { return }
-        profiles[profileIndex].name = newName
-        LoginDefaults.standard.profiles = profiles
+        dataSource.renameProfile(profile.id, newName: newName)
     }
 }

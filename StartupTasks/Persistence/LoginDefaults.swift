@@ -60,30 +60,6 @@ final class LoginDefaults: NSObject {
             userDefaults.value(forKey: Keys.finishedStartupProcess.rawValue) as? Bool ?? false
         }
     }
-
-    var profiles: [Profile] {
-        set {
-            let encoder = JSONEncoder()
-            do {
-                let encodedProfiles = try encoder.encode(newValue)
-                userDefaults.set(encodedProfiles, forKey: Keys.profiles.rawValue)
-            } catch {
-                print("Error encoding 'profiles': \(error.localizedDescription)")
-            }
-        }
-        get {
-            guard let encodedProfiles = userDefaults.value(forKey: Keys.profiles.rawValue) as? Data else { return [] }
-            let decoder = JSONDecoder()
-            
-            do {
-                let decodedProfiles = try decoder.decode([Profile].self, from: encodedProfiles)
-                return decodedProfiles
-            } catch {
-                print("Error decoding 'profiles': \(error.localizedDescription)")
-                return []
-            }
-        }
-    }
 }
 
 extension LoginDefaults {
