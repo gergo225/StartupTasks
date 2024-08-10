@@ -19,6 +19,7 @@ enum ProfilePageAction {
 class ProfileViewModel: ObservableObject {
     @ObservedObject var appsViewModel: AppsViewModel
     @ObservedObject var urlsViewModel: UrlsViewModel
+    @ObservedObject var filesViewModel: FilesViewModel
 
     @ObservationIgnored
     private let dataSource: ProfilesDataSource
@@ -29,14 +30,34 @@ class ProfileViewModel: ObservableObject {
         self.profile = profile
         self.appsViewModel = AppsViewModel(apps: profile.apps)
         self.urlsViewModel = UrlsViewModel(urls: profile.urls)
+        self.filesViewModel = FilesViewModel(filePaths: profile.filePaths)
         self.dataSource = ProfilesDataSourceImpl.shared
 
         self.appsViewModel.profileDelegate = self
         self.urlsViewModel.profileDelegate = self
+        self.filesViewModel.profileDelegate = self
     }
 }
 
-extension ProfileViewModel: AppsProfileDelegate, UrlsProfileDelegate {
+extension ProfileViewModel: AppsProfileDelegate, UrlsProfileDelegate, FilesProfileDelegate {
+    func addFileToProfile(filePath: URL) {
+        guard !profile.filePaths.contains(where: { $0 == filePath }) else { return }
+
+        var updatedProfile = profile
+        updatedProfile.filePaths.append(filePath)
+
+        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
+    }
+
+    func removeFileFromProfile(filePath: URL) {
+        guard let filePathIndex = profile.filePaths.firstIndex(where: { $0 == filePath }) else { return }
+
+        var updatedProfile = profile
+        updatedProfile.filePaths.remove(at: filePathIndex)
+
+        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
+    }
+
     func addAppToProfile(appItem: AppItem) {
         guard !profile.apps.contains(where: { $0.appPath == appItem.appPath }) else { return }
 

@@ -14,7 +14,7 @@ class AppItem: Hashable {
     var name: String
     var appPath: URL
 
-    var icon: NSImage? {
+    var icon: NSImage {
         NSWorkspace.shared.icon(forFile: appPath.relativePath)
     }
 

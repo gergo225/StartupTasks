@@ -74,7 +74,7 @@ private extension MainViewModel {
               let url = URL(string: "youtube.com")
         else { return nil }
 
-        return Profile(name: "Default", apps: [app], urls: [url])
+        return Profile(name: "Default", apps: [app], urls: [url], filePaths: [])
     }
 
     func subscribeToProfileChanges() {
@@ -95,7 +95,7 @@ private extension MainViewModel {
     func onAddProfilePressed() {
         let emptyUrls: [URL] = []
         let newProfileName = model.profiles.count == 0 ? "New Profile" : "New Profile (\(model.profiles.count)"
-        let newProfile = Profile(name: newProfileName, apps: emptyUrls, urls: emptyUrls)
+        let newProfile = Profile(name: newProfileName, apps: emptyUrls, urls: emptyUrls, filePaths: emptyUrls)
 
         dataSource.addProfile(newProfile)
     }

@@ -23,11 +23,7 @@ struct AppsList: View {
 
     private func appItem(app: AppItem) -> some View {
         HStack(spacing: 8) {
-            if let icon = app.icon {
-                Image(nsImage: icon)
-            } else {
-                Image(systemName: "xmark.circle.fill")
-            }
+            Image(nsImage: app.icon)
 
             Text(app.name)
         }

@@ -125,7 +125,12 @@ struct MainViewContent: View {
         URL(string: "https://facebook.com")!
     ]
 
-    let profile = Profile(name: "Live Coding", apps: appPaths, urls: urls)
+    let filePaths: [URL] = [
+        URL(string: "/Users/fazekasgergo/Music/Music/Music Library.musiclibrary")!,
+        URL(string: "/Users/fazekasgergo/Music/Music")!
+    ]
+
+    let profile = Profile(name: "Live Coding", apps: appPaths, urls: urls, filePaths: filePaths)
     let profileViewModel = ProfileViewModel(profile: profile)
 
     let model = MainModel()

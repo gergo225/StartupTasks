@@ -72,8 +72,8 @@ struct MenuBarButtonStyle: ButtonStyle {
 
 #Preview {
     let profiles = [
-        Profile(name: "First", apps: [], urls: []),
-        Profile(name: "Second", apps: [], urls: [])
+        Profile(name: "First", apps: [], urls: [], filePaths: []),
+        Profile(name: "Second", apps: [], urls: [], filePaths: [])
     ]
 
     return MenuBarProfilesContent(profiles: profiles) { _ in }

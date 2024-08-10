@@ -27,6 +27,15 @@ struct ProfilePage: View {
                 } label: {
                     Text("Websites")
                 }
+
+                Spacer()
+                    .frame(height: 16)
+
+                GroupBox {
+                    FilesView(viewModel: profileViewModel.filesViewModel)
+                } label: {
+                    Text("Files")
+                }
             }
             .groupBoxStyle(ListGroupBoxStyle())
             .padding()
@@ -35,6 +44,7 @@ struct ProfilePage: View {
 }
 
 #Preview {
+    //TODO: app paths crash Preview - why?
     let safariPath = URL(string: "/Applications/Safari.app")!
     let weatherPath = URL(string: "/System/Applications/Weather.app")!
     let appPaths = [safariPath, weatherPath]
@@ -44,7 +54,12 @@ struct ProfilePage: View {
         URL(string: "https://youtube.com")!
     ]
 
-    let profile = Profile(name: "Live Coding", apps: appPaths, urls: urls)
+    let filePaths = [
+        URL(string: "/Users/fazekasgergo/Music/Music/Music Library.musiclibrary")!,
+        URL(string: "/Users/fazekasgergo/Music/Music/")!
+    ]
+
+    let profile = Profile(name: "Live Coding", apps: appPaths, urls: urls, filePaths: filePaths)
     let profileViewModel = ProfileViewModel(profile: profile)
 
     return ProfilePage(profileViewModel: profileViewModel)
