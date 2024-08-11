@@ -96,6 +96,9 @@ struct MainViewContent: View {
 
             Button("Delete", role: .destructive) {
                 onAction(.removeProfile(profile: profile))
+                if selectedProfile == profile {
+                    selectedProfile = model.profiles.first
+                }
             }
         }
     }
