@@ -43,53 +43,59 @@ extension ProfileViewModel: AppsProfileDelegate, UrlsProfileDelegate, FilesProfi
     func addFileToProfile(filePath: URL) {
         guard !profile.filePaths.contains(where: { $0 == filePath }) else { return }
 
-        var updatedProfile = profile
-        updatedProfile.filePaths.append(filePath)
-
-        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
+        performProfileUpdate {
+            $0.filePaths.append(filePath)
+            return $0
+        }
     }
 
     func removeFileFromProfile(filePath: URL) {
         guard let filePathIndex = profile.filePaths.firstIndex(where: { $0 == filePath }) else { return }
 
-        var updatedProfile = profile
-        updatedProfile.filePaths.remove(at: filePathIndex)
-
-        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
+        performProfileUpdate {
+            $0.filePaths.remove(at: filePathIndex)
+            return $0
+        }
     }
 
     func addAppToProfile(appItem: AppItem) {
         guard !profile.apps.contains(where: { $0.appPath == appItem.appPath }) else { return }
 
-        var updatedProfile = profile
-        updatedProfile.apps.append(appItem)
-
-        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
+        performProfileUpdate {
+            $0.apps.append(appItem)
+            return $0
+        }
     }
 
     func addUrlToProfile(url: URL) {
         guard !profile.urls.contains(where: { $0 == url }) else { return }
 
-        var updatedProfile = profile
-        updatedProfile.urls.append(url)
-
-        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
+        performProfileUpdate {
+            $0.urls.append(url)
+            return $0
+        }
     }
 
     func removeAppFromProfile(appItem: AppItem) {
         guard let appIndex = profile.apps.firstIndex(where: { $0.appPath == appItem.appPath }) else { return }
 
-        var updatedProfile = profile
-        updatedProfile.apps.remove(at: appIndex)
-
-        dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
+        performProfileUpdate {
+            $0.apps.remove(at: appIndex)
+            return $0
+        }
     }
 
     func removeUrlFromProfile(url: URL) {
         guard let urlIndex = profile.urls.firstIndex(where: { $0 == url }) else { return }
 
-        var updatedProfile = profile
-        updatedProfile.urls.remove(at: urlIndex)
+        performProfileUpdate {
+            $0.urls.remove(at: urlIndex)
+            return $0
+        }
+    }
+
+    private func performProfileUpdate(updatedProfile: (Profile) -> Profile) {
+        let updatedProfile = updatedProfile(profile)
 
         dataSource.updateProfileItems(profile.id, newProfileWithItems: updatedProfile)
     }
