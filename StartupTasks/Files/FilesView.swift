@@ -28,7 +28,7 @@ struct FilesViewContent: View {
     var body: some View {
         VStack {
             EditableList(items: model.filePathsToOpen, addButtonText: "Add new file") { filePath in
-                FileItemView(filePath: filePath)
+                LaunchableItemView(item: FileItem(filePath: filePath))
             } onAddPressed: {
                 onAction(.addFilePressed)
             } onRemove: { filePath in

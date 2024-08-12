@@ -8,17 +8,19 @@
 import Foundation
 import SwiftUI
 
-struct AppItemView: View {
-    let appItem: AppItem
+struct LaunchableItemView: View {
+    let item: any LaunchableItem
 
     var body: some View {
         HStack(spacing: 8) {
-            Image(nsImage: appItem.icon)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 40, height: 40)
+            if let icon = item.icon {
+                Image(nsImage: icon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40, height: 40)
+            }
 
-            Text(appItem.name)
+            Text(item.name)
         }
     }
 }
@@ -28,8 +30,8 @@ struct AppItemView: View {
     let userApp = AppItem(appPath: URL(string: "/Applications/Google Chrome.app")!)!
 
     return VStack(alignment: .leading) {
-        AppItemView(appItem: systemApp)
-        AppItemView(appItem: userApp)
+        LaunchableItemView(item: systemApp)
+        LaunchableItemView(item: userApp)
     }
     .padding()
 }

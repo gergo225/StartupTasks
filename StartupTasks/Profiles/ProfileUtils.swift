@@ -11,7 +11,7 @@ import AppKit
 final class ProfileUtils {
     static func startProfile(_ profile: Profile) {
         openUrls(profile.urls)
-        openApps(profile.apps.map { $0.appPath })
+        openApps(profile.apps.map { $0.path })
         openFiles(profile.filePaths)
     }
 

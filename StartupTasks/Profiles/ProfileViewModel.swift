@@ -59,7 +59,7 @@ extension ProfileViewModel: AppsProfileDelegate, UrlsProfileDelegate, FilesProfi
     }
 
     func addAppToProfile(appItem: AppItem) {
-        guard !profile.apps.contains(where: { $0.appPath == appItem.appPath }) else { return }
+        guard !profile.apps.contains(where: { $0.path == appItem.path }) else { return }
 
         performProfileUpdate {
             $0.apps.append(appItem)
@@ -77,7 +77,7 @@ extension ProfileViewModel: AppsProfileDelegate, UrlsProfileDelegate, FilesProfi
     }
 
     func removeAppFromProfile(appItem: AppItem) {
-        guard let appIndex = profile.apps.firstIndex(where: { $0.appPath == appItem.appPath }) else { return }
+        guard let appIndex = profile.apps.firstIndex(where: { $0.path == appItem.path }) else { return }
 
         performProfileUpdate {
             $0.apps.remove(at: appIndex)

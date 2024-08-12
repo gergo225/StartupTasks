@@ -17,15 +17,7 @@ struct AppsList: View {
 
     var body: some View {
         List(allApps, id: \.self, selection: $selectedApp) { app in
-            appItem(app: app)
-        }
-    }
-
-    private func appItem(app: AppItem) -> some View {
-        HStack(spacing: 8) {
-            Image(nsImage: app.icon)
-
-            Text(app.name)
+            LaunchableItemView(item: app)
         }
     }
 }

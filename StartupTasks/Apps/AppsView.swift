@@ -37,7 +37,7 @@ struct AppsViewContent: View {
     var body: some View {
         VStack {
             EditableList(items: model.addedApps, addButtonText: Strings.addNewApp) { app in
-                AppItemView(appItem: app)
+                LaunchableItemView(item: app)
             } onAddPressed: {
                 onAction(.addAppPressed)
             } onRemove: { app in
