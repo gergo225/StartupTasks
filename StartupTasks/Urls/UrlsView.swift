@@ -14,36 +14,22 @@ struct UrlsView: View {
     @State private var urlString: String = ""
 
     var body: some View {
-        UrlsViewContent(model: viewModel.model, onAction: viewModel.onAction)
-            .sheet(isPresented: $viewModel.shouldPresentAddUrl) {
-               addUrlPage
-            }
+        LaunchableItemsViewContent(
+            viewModel: viewModel,
+            addButtonText: Strings.addNewWebpage
+        ) { urlItem in
+            UrlItemView(url: urlItem.path)
+        }
+        .sheet(isPresented: $viewModel.shouldPresentAddDialog) {
+            addUrlPage
+        }
     }
 
     private var addUrlPage: some View {
         AddUrlPage { urlString in
-            viewModel.onAction(.addUrl(urlString: urlString))
+            viewModel.onAdd(urlString: urlString)
         } onCancel: {
-            viewModel.onAction(.cancelAddNewUrl)
-        }
-    }
-}
-
-struct UrlsViewContent: View {
-    @ObservedObject var model: UrlsPageModel
-    var onAction: (UrlPageAction) -> Void = { _ in }
-
-    @State private var hoveredItem: URL?
-
-    var body: some View {
-        VStack {
-            EditableList(items: model.urlsToOpen, addButtonText: "Add new webpage") { url in
-                UrlItemView(url: url)
-            } onAddPressed: {
-                onAction(.addUrlPressed)
-            } onRemove: { url in
-                onAction(.removeUrl(url: url))
-            }
+            viewModel.onAction(.cancelAddNewItem)
         }
     }
 }

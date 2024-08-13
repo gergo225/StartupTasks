@@ -11,30 +11,20 @@ struct FilesView: View {
     @ObservedObject var viewModel: FilesViewModel
 
     var body: some View {
-        FilesViewContent(model: viewModel.model, onAction: viewModel.onAction)
-            .fileImporter(isPresented: $viewModel.shouldPresentFilePicker, allowedContentTypes: [.item]) { result in
-                guard case .success(let filePath) = result else { return }
-                viewModel.onAction(.addFile(filePath: filePath))
-            }
-    }
-}
-
-struct FilesViewContent: View {
-    @ObservedObject var model: FilesPageModel
-    var onAction: (FilesPageAction) -> Void = { _ in }
-
-    @State private var hoveredItem: URL?
-
-    var body: some View {
-        VStack {
-            EditableList(items: model.filePathsToOpen, addButtonText: "Add new file") { filePath in
-                LaunchableItemView(item: FileItem(filePath: filePath))
-            } onAddPressed: {
-                onAction(.addFilePressed)
-            } onRemove: { filePath in
-                onAction(.removeFile(filePath: filePath))
-            }
+        LaunchableItemsViewContent(
+            viewModel: viewModel,
+            addButtonText: Strings.addNewFile
+        ) { fileItem in
+            LaunchableItemView(item: fileItem)
         }
+        .fileImporter(
+            isPresented: $viewModel.shouldPresentAddDialog,
+            allowedContentTypes: [.item],
+            onCompletion: { result in
+                guard case .success(let filePath) = result else { return }
+                viewModel.onAction(.addItem(item: FileItem(filePath: filePath)))
+            }
+        )
     }
 }
 
