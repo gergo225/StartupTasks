@@ -12,7 +12,8 @@ struct FilesView: View {
 
     var body: some View {
         LaunchableItemsViewContent(
-            viewModel: viewModel,
+            items: viewModel.items,
+            onAction: viewModel.onAction,
             addButtonText: Strings.addNewFile
         ) { fileItem in
             LaunchableItemView(item: fileItem)

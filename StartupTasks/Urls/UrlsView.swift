@@ -15,7 +15,8 @@ struct UrlsView: View {
 
     var body: some View {
         LaunchableItemsViewContent(
-            viewModel: viewModel,
+            items: viewModel.items,
+            onAction: viewModel.onAction,
             addButtonText: Strings.addNewWebpage
         ) { urlItem in
             UrlItemView(url: urlItem.path)

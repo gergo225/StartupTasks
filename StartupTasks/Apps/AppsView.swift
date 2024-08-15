@@ -13,7 +13,8 @@ struct AppsView: View {
 
     var body: some View {
         LaunchableItemsViewContent(
-            viewModel: viewModel,
+            items: viewModel.items,
+            onAction: viewModel.onAction,
             addButtonText: Strings.addNewApp
         ) { appItem in
             LaunchableItemView(item: appItem)

@@ -134,7 +134,6 @@ struct MainViewContent: View {
     ]
 
     let profile = Profile(name: "Live Coding", apps: appPaths, urls: urls, filePaths: filePaths)
-    let profileViewModel = ProfileViewModel(profile: profile)
 
     let model = MainModel()
     model.profiles = [profile]
