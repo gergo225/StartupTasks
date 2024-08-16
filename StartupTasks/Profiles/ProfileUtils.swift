@@ -29,13 +29,20 @@ final class ProfileUtils {
     }
 
     private static func openFiles(_ filePaths: [URL]) {
-        let openConfiguration = NSWorkspace.OpenConfiguration()
         let fileManager = FileManager.default
 
         filePaths
             .filter { fileManager.fileExists(atPath: $0.relativePath) }
-            .forEach {
-                NSWorkspace.shared.open($0.absoluteURL, configuration: openConfiguration)
+            .forEach { filePath in
+                guard filePath.startAccessingSecurityScopedResource() else {
+                    print("Error accessing file")
+                    return
+                }
+                defer {
+                    filePath.stopAccessingSecurityScopedResource()
+                }
+
+                NSWorkspace.shared.open(filePath.absoluteURL)
             }
     }
 }
