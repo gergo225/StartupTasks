@@ -12,8 +12,8 @@ struct TextInputPrompt: View {
 
     var onConfirm: (String) -> Void
     var onCancel: () -> Void
-    var cancelButtonString: String = "Cancel"
-    var confirmButtonString: String = "Confirm"
+    var cancelButtonString: String = Strings.cancelLabel
+    var confirmButtonString: String = Strings.confirmLabel
     var textPrompt: String = ""
 
     var body: some View {

@@ -25,7 +25,7 @@ struct MenuBarProfilesContent: View {
     var body: some View {
         VStack(spacing: 4) {
             if profiles.isEmpty {
-                Text("No profiles to run")
+                Text(Strings.noProfilesToRun)
                     .padding(.vertical, 4)
                     .padding(.horizontal, 8)
             } else {

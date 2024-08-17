@@ -26,7 +26,7 @@ struct MainView: View {
             onCancel: {
                 viewModel.onAction(.cancelProfileRename)
             },
-            confirmButtonString: "Rename",
+            confirmButtonString: Strings.renameLabel,
             textPrompt: profile.name
         )
     }
@@ -52,7 +52,7 @@ struct MainViewContent: View {
             if let selectedProfile {
                 ProfileRouter.profilePage(for: selectedProfile)
             } else {
-                Text("No profile selected")
+                Text(Strings.noProfileSelected)
             }
         }
         .navigationTitle(selectedProfile?.name ?? "")
@@ -69,7 +69,7 @@ struct MainViewContent: View {
                         .padding(8)
                         .clipShape(.rect(cornerRadius: 8))
                 }
-                .help("Start profile")
+                .help(Strings.startProfile)
             }
         }
         .frame(minWidth: 600, minHeight: 400, maxHeight: .infinity)
@@ -90,11 +90,11 @@ struct MainViewContent: View {
             Label(profile.name, systemImage: "folder")
         })
         .contextMenu {
-            Button("Rename") {
+            Button(Strings.renameLabel) {
                 onAction(.renameProfilePressed(profile: profile))
             }
 
-            Button("Delete", role: .destructive) {
+            Button(Strings.deleteLabel, role: .destructive) {
                 onAction(.removeProfile(profile: profile))
                 if selectedProfile == profile {
                     selectedProfile = model.profiles.first
@@ -107,7 +107,7 @@ struct MainViewContent: View {
         Button {
             onAction(.addProfilePressed)
         } label: {
-            Label("New", systemImage: "plus")
+            Label(Strings.newLabel, systemImage: "plus")
                 .foregroundStyle(.secondary)
                 .padding([.vertical, .leading])
                 .frame(maxWidth: .infinity, alignment: .leading)

@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         LoginDefaults.standard.launchedAtLogin = LaunchAtLogin.wasLaunchedAtLogin
         LoginDefaults.standard.finishedStartupProcess = false
         
-        menuBarExtra = FluidMenuBarExtra(title: "Startup Tasks") {
+        menuBarExtra = FluidMenuBarExtra(title: Strings.menuBarExtraTitle) {
             MenuBarProfiles()
         }
     }

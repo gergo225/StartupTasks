@@ -94,7 +94,7 @@ private extension MainViewModel {
 
     func onAddProfilePressed() {
         let emptyUrls: [URL] = []
-        let newProfileName = model.profiles.count == 0 ? "New Profile" : "New Profile (\(model.profiles.count)"
+        let newProfileName = model.profiles.count == 0 ? Strings.newProfile : Strings.newProfileNumbered(model.profiles.count)
         let newProfile = Profile(name: newProfileName, apps: emptyUrls, urls: emptyUrls, filePaths: emptyUrls)
 
         dataSource.addProfile(newProfile)

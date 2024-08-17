@@ -16,7 +16,7 @@ struct ProfilePage: View {
                 GroupBox {
                     AppsView(viewModel: profileViewModel.appsViewModel)
                 } label: {
-                    Text("Apps")
+                    Text(Strings.appsLabel)
                 }
 
                 Spacer()
@@ -25,7 +25,7 @@ struct ProfilePage: View {
                 GroupBox {
                     UrlsView(viewModel: profileViewModel.urlsViewModel)
                 } label: {
-                    Text("Websites")
+                    Text(Strings.websitesLabel)
                 }
 
                 Spacer()
@@ -34,7 +34,7 @@ struct ProfilePage: View {
                 GroupBox {
                     FilesView(viewModel: profileViewModel.filesViewModel)
                 } label: {
-                    Text("Files")
+                    Text(Strings.filesLabel)
                 }
             }
             .groupBoxStyle(ListGroupBoxStyle())

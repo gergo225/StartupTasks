@@ -18,7 +18,7 @@ struct AddUrlPage: View {
             onConfirm: onConfirm,
             onCancel: onCancel,
             confirmButtonString: Strings.addLabel,
-            textPrompt: "Website to open"
+            textPrompt: Strings.websiteToOpen
         )
     }
 }

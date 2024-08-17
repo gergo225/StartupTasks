@@ -35,7 +35,7 @@ final class ProfileUtils {
             .filter { fileManager.fileExists(atPath: $0.relativePath) }
             .forEach { filePath in
                 guard filePath.startAccessingSecurityScopedResource() else {
-                    print("Error accessing file")
+                    print(Strings.errorAccessingFile)
                     return
                 }
                 defer {
