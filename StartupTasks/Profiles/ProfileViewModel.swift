@@ -9,13 +9,6 @@ import Foundation
 import AppKit
 import SwiftUI
 
-enum ProfilePageAction {
-    case onAddNewApp(appItem: AppItem)
-    case onAddNewUrl(url: URL)
-    case onRemoveApp(appItem: AppItem)
-    case onRemoveUrl(url: URL)
-}
-
 class ProfileViewModel: ObservableObject {
     @ObservedObject var appsViewModel: AppsViewModel
     @ObservedObject var urlsViewModel: UrlsViewModel
