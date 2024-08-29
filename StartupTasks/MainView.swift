@@ -52,7 +52,7 @@ struct MainViewContent: View {
             if let selectedProfile {
                 ProfileRouter.profilePage(for: selectedProfile)
             } else {
-                Text(Strings.noProfileSelected)
+                noProfilesView
             }
         }
         .navigationTitle(selectedProfile?.name ?? "")
@@ -114,6 +114,20 @@ struct MainViewContent: View {
                 .contentShape(.buttonBorder)
         }
         .buttonStyle(.plain)
+    }
+
+    private var noProfilesView: some View {
+        VStack(alignment: .center) {
+            Text(Strings.noProfileSelected)
+            Button {
+                onAction(.addProfilePressed)
+            } label: {
+                Label(Strings.createNewProfile, systemImage: "plus")
+                    .padding(.vertical, 4)
+                    .frame(maxWidth: 200)
+            }
+            .buttonStyle(.borderedProminent)
+        }
     }
 }
 

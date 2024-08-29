@@ -29,6 +29,7 @@ internal enum Strings {
     internal static func newProfileNumbered(_ number: Any) -> String {
         return "New Profile (\(number))"
     }
+    internal static let createNewProfile = "Create new profile"
     internal static let errorAccessingFile = "Error accessing file"
     internal static let websiteToOpen = "Website to open"
 }
