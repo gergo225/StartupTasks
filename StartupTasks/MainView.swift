@@ -83,6 +83,11 @@ struct MainViewContent: View {
             guard let launchedAtLogin else { return }
             onAction(.launchedAtLoginChanged(launchedAtLogin: launchedAtLogin))
         }
+        .onChange(of: model.profiles) {
+            if selectedProfile == nil {
+                selectedProfile = model.profiles.first
+            }
+        }
     }
 
     private func profileItem(for profile: Profile) -> some View {
