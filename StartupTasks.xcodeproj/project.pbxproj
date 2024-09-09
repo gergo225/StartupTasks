@@ -141,6 +141,7 @@
 		4E0C408A2C02743500F08629 /* StartupTasks */ = {
 			isa = PBXGroup;
 			children = (
+				4E117CCA2C8F5FC200064ED2 /* Utils */,
 				4E6C67102C694EC200E19293 /* Launchable Items */,
 				4E7DC3B42C66A91700297FBF /* Files */,
 				4E044EDE2C28994F004493D8 /* Persistence */,
@@ -151,8 +152,6 @@
 				4E0C408B2C02743500F08629 /* StartupTasksApp.swift */,
 				4E0C408D2C02743500F08629 /* MainView.swift */,
 				4E628A692C065CE200A89F2A /* SettingsPage.swift */,
-				4E450A652C0777F300B5BF4B /* Strings.swift */,
-				4E0FBE582C09FE6600D40E2B /* CombineExtensions.swift */,
 				4E9210632C0B29E10035E1DE /* MainViewModel.swift */,
 				4E0C409A2C027E2100F08629 /* Info.plist */,
 				4E0C408F2C02743600F08629 /* Assets.xcassets */,
@@ -168,6 +167,15 @@
 				4E0C40922C02743600F08629 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4E117CCA2C8F5FC200064ED2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4E450A652C0777F300B5BF4B /* Strings.swift */,
+				4E0FBE582C09FE6600D40E2B /* CombineExtensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		4E6C67102C694EC200E19293 /* Launchable Items */ = {
