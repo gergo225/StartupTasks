@@ -21,6 +21,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             MenuBarProfiles()
         }
     }
+
+    func application(_ application: NSApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([NSUserActivityRestoring]) -> Void) -> Bool {
+        guard let userInfo = userActivity.userInfo,
+              let uuidString = userInfo["kCSSearchableItemActivityIdentifier"] as? String,
+              let profileUuid = UUID(uuidString: uuidString) else { return false }
+
+        handleStartFromSpotlight(profileUuid: profileUuid)
+        return true
+    }
+
+    private func handleStartFromSpotlight(profileUuid: UUID) {
+        let profilesDataSource = ProfilesDataSourceImpl.shared
+
+        guard let profile = profilesDataSource.fetchProfiles().first(where: { $0.id == profileUuid }) else { return }
+        ProfileUtils.startProfile(profile)
+    }
 }
 
 @main

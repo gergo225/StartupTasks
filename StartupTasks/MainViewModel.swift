@@ -39,6 +39,7 @@ class MainViewModel: ObservableObject {
         subscribeToProfileChanges()
 
         addDefaultProfileIfNeeded()
+        addAllProfilesToSpotlightSearch()
     }
 
     func onAction(_ action: MainAction) {
@@ -82,6 +83,11 @@ private extension MainViewModel {
             self?.model.profiles = profiles
         }
         .store(in: &subscriptions)
+    }
+
+    func addAllProfilesToSpotlightSearch() {
+        let spotlight = SpotlightHelper()
+        spotlight.addProfilesToSpotlightSearch(model.profiles)
     }
 }
 

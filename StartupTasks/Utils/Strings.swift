@@ -32,4 +32,5 @@ internal enum Strings {
     internal static let createNewProfile = "Create new profile"
     internal static let errorAccessingFile = "Error accessing file"
     internal static let websiteToOpen = "Website to open"
+    internal static let openAppsFilesAndWebpages = "Open apps, files and webpages"
 }
