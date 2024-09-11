@@ -115,10 +115,19 @@ private extension MainViewModel {
         guard profile.name != newName else { return }
         
         dataSource.renameProfile(profile.id, newName: newName)
+
+        var updatedProfile = profile
+        updatedProfile.name = newName
+        updateProfileInSpotlightSearch(to: updatedProfile)
     }
 
     func removeProfileFromSpotlightSearch(_ profile: Profile) {
         let spotlight = SpotlightHelper()
         spotlight.deleteProfileFromSpotlightSearch(profile)
+    }
+
+    func updateProfileInSpotlightSearch(to profile: Profile) {
+        let spotlight = SpotlightHelper()
+        spotlight.addProfilesToSpotlightSearch([profile])
     }
 }
