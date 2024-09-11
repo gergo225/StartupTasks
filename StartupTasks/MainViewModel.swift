@@ -104,6 +104,7 @@ private extension MainViewModel {
         let newProfile = Profile(name: newProfileName, apps: emptyUrls, urls: emptyUrls, filePaths: emptyUrls)
 
         dataSource.addProfile(newProfile)
+        addProfileToSpotlightSearch(newProfile)
     }
 
     func removeProfile(_ profile: Profile) {
@@ -113,12 +114,19 @@ private extension MainViewModel {
 
     func renameProfile(_ profile: Profile, newName: String) {
         guard profile.name != newName else { return }
-        
+
         dataSource.renameProfile(profile.id, newName: newName)
 
         var updatedProfile = profile
         updatedProfile.name = newName
         updateProfileInSpotlightSearch(to: updatedProfile)
+    }
+}
+
+private extension MainViewModel {
+    func addProfileToSpotlightSearch(_ profile: Profile) {
+        let spotlight = SpotlightHelper()
+        spotlight.addProfilesToSpotlightSearch([profile])
     }
 
     func removeProfileFromSpotlightSearch(_ profile: Profile) {
