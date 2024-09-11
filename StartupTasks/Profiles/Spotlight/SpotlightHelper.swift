@@ -17,6 +17,10 @@ final class SpotlightHelper {
         defaultSearchableIndex.indexSearchableItems(searchableItems)
     }
 
+    func deleteProfileFromSpotlightSearch(_ profile: Profile) {
+        defaultSearchableIndex.deleteSearchableItems(withIdentifiers: [profile.id.uuidString])
+    }
+
     private func convertProfileToSearchableItem(_ profile: Profile) -> CSSearchableItem {
         let attributeSet = getSearchableItemAttributeSet(for: profile)
         return CSSearchableItem(uniqueIdentifier: profile.id.uuidString, domainIdentifier: nil, attributeSet: attributeSet)

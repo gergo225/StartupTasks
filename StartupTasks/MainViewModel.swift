@@ -108,11 +108,17 @@ private extension MainViewModel {
 
     func removeProfile(_ profile: Profile) {
         dataSource.removeProfile(profile.id)
+        removeProfileFromSpotlightSearch(profile)
     }
 
     func renameProfile(_ profile: Profile, newName: String) {
         guard profile.name != newName else { return }
         
         dataSource.renameProfile(profile.id, newName: newName)
+    }
+
+    func removeProfileFromSpotlightSearch(_ profile: Profile) {
+        let spotlight = SpotlightHelper()
+        spotlight.deleteProfileFromSpotlightSearch(profile)
     }
 }
