@@ -28,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
               let profileUuid = UUID(uuidString: uuidString) else { return false }
 
         handleStartFromSpotlight(profileUuid: profileUuid)
+        closeApp()
         return true
     }
 
@@ -36,6 +37,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         guard let profile = profilesDataSource.fetchProfiles().first(where: { $0.id == profileUuid }) else { return }
         ProfileUtils.startProfile(profile)
+    }
+
+    private func closeApp() {
+        NSApplication.shared.terminate(nil)
     }
 }
 
