@@ -28,7 +28,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
               let profileUuid = UUID(uuidString: uuidString) else { return false }
 
         handleStartFromSpotlight(profileUuid: profileUuid)
-        closeApp()
         return true
     }
 
@@ -37,10 +36,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         guard let profile = profilesDataSource.fetchProfiles().first(where: { $0.id == profileUuid }) else { return }
         ProfileUtils.startProfile(profile)
+
+        closeAppAfterAllAppsStarted(apps: profile.apps.map { $0.path })
     }
 
-    private func closeApp() {
-        NSApplication.shared.terminate(nil)
+    private func closeAppAfterAllAppsStarted(apps: [URL]) {
+        let timerCountLimit = 20
+        var timerCount = 0
+
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { timer in
+            timerCount += 1
+
+            let allAppsStarted = apps.allSatisfy { AppUtils.appIsStarted($0) }
+
+            if timerCount > timerCountLimit || allAppsStarted {
+                timer.invalidate()
+                NSApplication.shared.terminate(nil)
+            }
+        }
     }
 }
 

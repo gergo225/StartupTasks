@@ -27,6 +27,11 @@ final class AppUtils {
         return appPaths
     }
 
+    static func appIsStarted(_ url: URL) -> Bool {
+        let runningApps = NSWorkspace.shared.runningApplications
+        return runningApps.contains(where: { $0.bundleURL == url })
+    }
+
     private static func getAllAppPaths(in directoryUrl: URL) -> [URL] {
         var appPaths = [URL]()
 
